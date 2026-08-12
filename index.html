@@ -253,11 +253,10 @@
     }
     .hero-panel {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) clamp(250px, 30%, 340px);
-      grid-template-rows: auto 1fr;
+      grid-template-columns: minmax(0, 1fr) clamp(270px, 34%, 380px);
       gap: 0;
       align-items: stretch;
-      min-height: 460px;
+      min-height: 0;
       background:
         radial-gradient(circle at 100% 0%, rgba(31, 111, 120, 0.14), transparent 42%),
         radial-gradient(circle at 0% 100%, rgba(184, 137, 61, 0.12), transparent 40%),
@@ -270,18 +269,20 @@
       overflow: hidden;
       position: relative;
     }
-    /* Flatten so intro/photo/body can share the full-height grid */
-    .hero-top {
-      display: contents;
+    /* Text column fills photo height: name top, bio middle, actions bottom */
+    .hero-content {
+      min-width: 0;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.15rem;
+      padding: 1.85rem 1.7rem 1.7rem 2.1rem;
     }
     .hero-intro {
-      grid-column: 1;
-      grid-row: 1;
       min-width: 0;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding: 2rem 1.6rem 0.35rem 2.15rem;
     }
     .hero-pills {
       display: flex;
@@ -295,13 +296,11 @@
       margin-bottom: 0;
     }
     .hero-body {
-      grid-column: 1;
-      grid-row: 2;
       min-width: 0;
-      padding: 0.55rem 1.6rem 1.85rem 2.15rem;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      gap: 0;
+      margin-top: auto;
     }
     .hero-panel::before {
       content: "";
@@ -487,15 +486,11 @@
     .hero-panel.is-composing .portrait-meta strong { font-size: 0.78rem; }
     .hero-panel.is-composing .portrait-meta span { font-size: 0.7rem; }
     .hero-panel.is-composing {
-      /* keep full-height photo column while compose is open */
-      grid-template-columns: minmax(0, 1fr) clamp(220px, 26%, 300px);
+      grid-template-columns: minmax(0, 1fr) clamp(240px, 30%, 340px);
     }
-    .hero-panel.is-composing .hero-intro {
-      padding-top: 1.45rem;
-      padding-bottom: 0.2rem;
-    }
-    .hero-panel.is-composing .hero-body {
-      padding-bottom: 1.45rem;
+    .hero-panel.is-composing .hero-content {
+      gap: 0.85rem;
+      padding-block: 1.4rem 1.35rem;
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-stage-default,
@@ -677,10 +672,8 @@
     .hero-stage-compose .form-note.err { color: #f0b4b4; }
     .hero-stage-compose .btn { min-height: 40px; padding: 0.5rem 0.95rem; }
 
-    /* Desktop portrait: full hero height, flush to the card edge */
+    /* Desktop portrait: matches full text-column height, flush to edge */
     .portrait-wrap {
-      grid-column: 2;
-      grid-row: 1 / span 2;
       width: auto;
       min-width: 0;
       min-height: 0;
@@ -713,9 +706,9 @@
       width: 100%;
       flex: 1 1 auto;
       height: 100%;
-      min-height: 320px;
+      min-height: 100%;
       object-fit: cover;
-      object-position: center 14%;
+      object-position: center 12%;
       background: #24384f;
     }
     .portrait-meta {
@@ -1479,30 +1472,30 @@
         grid-template-columns: 1fr;
       }
       .grid-3 { grid-template-columns: 1fr; }
-      /* Mobile: compact photo + name row, then body */
+      /* Mobile: photo + name on top row, body under */
       .hero-panel {
         display: grid;
         grid-template-columns: 132px minmax(0, 1fr);
-        grid-template-rows: auto auto;
+        grid-template-areas:
+          "photo intro"
+          "body body";
         gap: 0.9rem 1rem;
         min-height: 0;
         padding: 1.15rem 1.1rem 1.25rem;
         border-radius: 20px;
       }
-      .hero-top {
+      .hero-content {
         display: contents;
       }
       .portrait-wrap {
-        grid-column: 1;
-        grid-row: 1;
+        grid-area: photo;
         width: 132px;
         height: auto;
         justify-self: start;
         align-self: center;
       }
       .hero-intro {
-        grid-column: 2;
-        grid-row: 1;
+        grid-area: intro;
         justify-content: center;
         align-items: center;
         text-align: center;
@@ -1511,8 +1504,8 @@
         padding: 0;
       }
       .hero-body {
-        grid-column: 1 / -1;
-        grid-row: 2;
+        grid-area: body;
+        margin-top: 0;
         padding: 0.85rem 0 0;
         border-top: 1px solid rgba(255,255,255,0.08);
       }
@@ -1535,6 +1528,10 @@
         grid-template-columns: 120px minmax(0, 1fr);
       }
       .hero-panel.is-composing .portrait-card img { height: 140px; }
+      .hero-panel.is-composing .hero-content {
+        display: contents;
+        padding: 0;
+      }
       /* Pills side-by-side, centered */
       .hero-intro .eyebrow,
       .hero-intro .hero-status {
@@ -1661,8 +1658,8 @@
     <section class="hero">
       <div class="wrap">
         <div class="hero-panel" id="heroPanel">
-          <div class="hero-top">
-            <div class="hero-intro">
+                    <div class="hero-content">
+<div class="hero-intro">
               <div class="hero-pills">
                 <p class="eyebrow">
                   <span data-lang="en">Portfolio · Riyadh</span>
@@ -1681,26 +1678,7 @@
                 <span data-lang="ar">مطوّر تطبيقات</span>
               </p>
             </div>
-            <div class="portrait-wrap">
-              <figure class="portrait-card">
-                <img
-                  src="assets/portrait.jpg"
-                  width="176"
-                  height="200"
-                  alt="Portrait of Abdullatif Almutairi"
-                  data-alt-en="Portrait of Abdullatif Almutairi"
-                  data-alt-ar="صورة عبداللطيف المطيري"
-                />
-                <figcaption class="portrait-meta">
-                  <strong data-lang="en">Open to work</strong>
-                  <strong data-lang="ar">متاح للعمل</strong>
-                  <span data-lang="en">App Developer · Riyadh</span>
-                  <span data-lang="ar">مطوّر تطبيقات · الرياض</span>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="hero-body">
+<div class="hero-body">
             <div class="hero-stage" id="heroStage">
               <div class="hero-stage-default" id="heroDefault">
                 <p class="hero-copy" data-lang="en">
@@ -1826,6 +1804,26 @@
               </div>
             </div>
           </div>
+          </div>
+<div class="portrait-wrap">
+              <figure class="portrait-card">
+                <img
+                  src="assets/portrait.jpg"
+                  width="176"
+                  height="200"
+                  alt="Portrait of Abdullatif Almutairi"
+                  data-alt-en="Portrait of Abdullatif Almutairi"
+                  data-alt-ar="صورة عبداللطيف المطيري"
+                />
+                <figcaption class="portrait-meta">
+                  <strong data-lang="en">Open to work</strong>
+                  <strong data-lang="ar">متاح للعمل</strong>
+                  <span data-lang="en">App Developer · Riyadh</span>
+                  <span data-lang="ar">مطوّر تطبيقات · الرياض</span>
+                </figcaption>
+              </figure>
+            </div>
+
         </div>
       </div>
     </section>
