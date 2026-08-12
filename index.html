@@ -279,21 +279,23 @@
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.25rem;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
     }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
-      padding: 0.6rem 1.1rem;
-      border-radius: 10px;
+      gap: 0.45rem;
+      min-height: 44px;
+      padding: 0.65rem 1.15rem;
+      border-radius: 12px;
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 650;
       transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
     }
     .btn:hover { transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.65; cursor: wait; transform: none; }
     .btn-primary {
       background: linear-gradient(180deg, #e8c27a, #c9973f);
       color: #1a1408;
@@ -309,52 +311,186 @@
       background: rgba(255,255,255,0.12);
       border-color: rgba(255,255,255,0.3);
     }
-    .meta-row {
+    .btn-wa-hero {
+      background: linear-gradient(180deg, #25d366, #1da851);
+      color: #fff;
+      border: 0;
+      box-shadow: 0 8px 20px rgba(29, 168, 81, 0.28);
+    }
+    .btn-wa-hero:hover { filter: brightness(1.05); }
+    .btn i { font-size: 1.05rem; line-height: 1; }
+
+    .hero-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.45rem 1.2rem;
-      color: rgba(238, 243, 248, 0.7);
-      font-size: 0.86rem;
+      gap: 0.45rem;
+      margin-bottom: 0.85rem;
     }
-    .meta-row strong {
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 34px;
+      padding: 0.3rem 0.55rem 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(238, 243, 248, 0.88);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .hero-chip i { opacity: 0.9; font-size: 0.95rem; }
+    .hero-chip button {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(255,255,255,0.1);
+      color: #f0d7a0;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .hero-chip button:hover { background: rgba(255,255,255,0.18); }
+    .hero-chip a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .hero-chip a:hover { color: #f0d7a0; }
+
+    /* Collapsed message composer in hero */
+    .hero-compose {
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.18);
+      overflow: hidden;
+      margin-top: 0.35rem;
+    }
+    .hero-compose-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
       color: #fff;
-      font-weight: 600;
+      font-weight: 650;
+      font-size: 0.92rem;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      text-align: start;
     }
+    .hero-compose-toggle:hover { background: rgba(255,255,255,0.04); }
+    .hero-compose-toggle .left {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .hero-compose-toggle .chev {
+      transition: transform 0.2s ease;
+      opacity: 0.8;
+    }
+    .hero-compose.is-open .hero-compose-toggle .chev {
+      transform: rotate(180deg);
+    }
+    .hero-compose-body {
+      display: none;
+      padding: 0 1rem 1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-compose.is-open .hero-compose-body { display: block; padding-top: 0.95rem; }
+    .hero-compose .form-row { margin-bottom: 0.7rem; }
+    .hero-compose .form-field label { color: rgba(238, 243, 248, 0.72); }
+    .hero-compose .form-field input,
+    .hero-compose .form-field textarea {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+    .hero-compose .form-field input::placeholder,
+    .hero-compose .form-field textarea::placeholder {
+      color: rgba(238, 243, 248, 0.4);
+    }
+    .hero-compose .form-field input:focus,
+    .hero-compose .form-field textarea:focus {
+      outline: 2px solid rgba(232, 194, 122, 0.35);
+      border-color: rgba(232, 194, 122, 0.45);
+    }
+    .hero-compose .form-note {
+      color: rgba(238, 243, 248, 0.7);
+      min-height: 1.1em;
+    }
+    .hero-compose .form-note.ok { color: #9fd0d4; }
+    .hero-compose .form-note.err { color: #f0b4b4; }
 
     /* Compact portrait */
     .portrait-wrap {
-      width: 168px;
+      width: 176px;
       flex-shrink: 0;
+      align-self: start;
     }
     .portrait-card {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+      box-shadow: 0 18px 46px rgba(0,0,0,0.3);
       backdrop-filter: blur(8px);
+      position: relative;
+    }
+    .portrait-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+      z-index: 1;
     }
     .portrait-card img {
       width: 100%;
-      height: 188px;
+      height: 200px;
       object-fit: cover;
       object-position: center 12%;
       background: #24384f;
     }
     .portrait-meta {
-      padding: 0.7rem 0.8rem 0.85rem;
+      padding: 0.75rem 0.85rem 0.9rem;
       border-top: 1px solid rgba(255,255,255,0.1);
       text-align: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
     }
     .portrait-meta strong {
       display: block;
-      font-size: 0.82rem;
-      margin-bottom: 0.1rem;
-      color: #fff;
+      font-size: 0.84rem;
+      margin-bottom: 0.12rem;
+      color: #f0d7a0;
     }
     .portrait-meta span {
-      color: rgba(238, 243, 248, 0.68);
-      font-size: 0.74rem;
+      color: rgba(238, 243, 248, 0.72);
+      font-size: 0.76rem;
+    }
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.28);
+      color: #9be7b5;
+      font-size: 0.78rem;
+      font-weight: 650;
+    }
+    .hero-status i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #25d366;
+      box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.15);
+      display: inline-block;
     }
 
     /* Sections */
@@ -819,8 +955,15 @@
       color: #fff;
       box-shadow: 0 10px 24px rgba(29, 168, 81, 0.25);
       transition: transform 0.15s, filter 0.15s;
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
     }
     .btn-wa:hover { transform: translateY(-1px); filter: brightness(1.03); }
+    .btn-wa i { font-size: 1.1rem; }
+    #contact .btn.btn-primary {
+      /* light section: keep gold primary usable */
+    }
 
     .contact-form {
       background: linear-gradient(180deg, #fffcf8, #f6f0e6);
@@ -1119,6 +1262,11 @@
               <span data-lang="en">Portfolio · Riyadh</span>
               <span data-lang="ar">ملف شخصي · الرياض</span>
             </p>
+            <div class="hero-status">
+              <i aria-hidden="true"></i>
+              <span data-lang="en">Open to work · Riyadh time (UTC+3)</span>
+              <span data-lang="ar">متاح للعمل · توقيت الرياض (UTC+3)</span>
+            </div>
             <h1 data-lang="en">Abdullatif Almutairi</h1>
             <h1 data-lang="ar">عبداللطيف المطيري</h1>
             <p class="hero-role">
@@ -1128,34 +1276,119 @@
             <p class="hero-copy" data-lang="en">
               Diploma graduate in Smart Device Application Development.
               I build mobile-minded products with clear UX thinking, practical problem-solving,
-              and careful attention to detail. Currently seeking a full-time opportunity.
+              and careful attention to detail.
             </p>
             <p class="hero-copy" data-lang="ar">
               خريج دبلوم في تطوير تطبيقات الأجهزة الذكية.
               أبني منتجات موجّهة للجوال بتفكير واضح في تجربة المستخدم، وحلّ عملي للمشكلات،
-              واهتمام دقيق بالتفاصيل. أبحث حالياً عن فرصة عمل بدوام كامل.
+              واهتمام دقيق بالتفاصيل.
             </p>
+
             <div class="hero-actions">
               <a class="btn btn-primary" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
+                <i class="bi bi-download" aria-hidden="true"></i>
                 <span data-lang="en">Download CV</span>
                 <span data-lang="ar">تحميل السيرة</span>
               </a>
-              <a class="btn btn-ghost" href="https://wa.me/966500066172?text=Hi%20Abdullatif%2C%20I%20saw%20your%20portfolio." target="_blank" rel="noopener">
+              <a
+                class="btn btn-wa-hero"
+                href="https://wa.me/966500066172?text=Hi%20Abdullatif%2C%20I%20saw%20your%20portfolio."
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="bi bi-whatsapp" aria-hidden="true"></i>
                 <span data-lang="en">WhatsApp</span>
                 <span data-lang="ar">واتساب</span>
               </a>
-              <a class="btn btn-ghost" href="mailto:abdullatif.almutairi@outlook.com">
-                <span data-lang="en">Email</span>
-                <span data-lang="ar">بريد</span>
-              </a>
+              <button class="btn btn-ghost" type="button" id="composeOpenBtn">
+                <i class="bi bi-chat-dots" aria-hidden="true"></i>
+                <span data-lang="en">Message</span>
+                <span data-lang="ar">رسالة</span>
+              </button>
             </div>
-            <div class="meta-row">
-              <span>
-                <strong data-lang="en">Riyadh, Saudi Arabia</strong>
-                <strong data-lang="ar">الرياض، السعودية</strong>
+
+            <div class="hero-chips">
+              <span class="hero-chip">
+                <i class="bi bi-envelope" aria-hidden="true"></i>
+                <a href="mailto:abdullatif.almutairi@outlook.com" dir="ltr">abdullatif.almutairi@outlook.com</a>
+                <button type="button" class="copy-btn" data-copy="abdullatif.almutairi@outlook.com" aria-label="Copy email" title="Copy">
+                  <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <rect x="9" y="9" width="11" height="11" rx="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                  <svg class="icon-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+                    <path d="M20 6 9 17l-5-5"/>
+                  </svg>
+                </button>
               </span>
-              <span dir="ltr">+966 50 006 6172</span>
-              <span dir="ltr">abdullatif.almutairi@outlook.com</span>
+              <span class="hero-chip">
+                <i class="bi bi-telephone" aria-hidden="true"></i>
+                <a href="tel:+966500066172" dir="ltr">+966 50 006 6172</a>
+                <button type="button" class="copy-btn" data-copy="+966500066172" aria-label="Copy phone" title="Copy">
+                  <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <rect x="9" y="9" width="11" height="11" rx="2"/>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                  </svg>
+                  <svg class="icon-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+                    <path d="M20 6 9 17l-5-5"/>
+                  </svg>
+                </button>
+              </span>
+              <span class="hero-chip">
+                <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                <span data-lang="en">Riyadh</span>
+                <span data-lang="ar">الرياض</span>
+              </span>
+              <span class="hero-chip">
+                <i class="bi bi-github" aria-hidden="true"></i>
+                <a href="https://github.com/abdullatifalmutairi" target="_blank" rel="noopener">@abdullatifalmutairi</a>
+              </span>
+            </div>
+
+            <div class="hero-compose" id="heroCompose">
+              <button
+                class="hero-compose-toggle"
+                type="button"
+                id="composeToggle"
+                aria-expanded="false"
+                aria-controls="composeBody"
+              >
+                <span class="left">
+                  <i class="bi bi-send" aria-hidden="true"></i>
+                  <span data-lang="en">Send a message</span>
+                  <span data-lang="ar">أرسل رسالة</span>
+                </span>
+                <i class="bi bi-chevron-down chev" aria-hidden="true"></i>
+              </button>
+              <div class="hero-compose-body" id="composeBody">
+                <form id="contactForm">
+                  <input type="hidden" name="access_key" value="fcbf2fdf-fcdf-486d-b3b3-4da5ca7afc54" />
+                  <input type="hidden" name="from_name" value="Abdullatif Portfolio" />
+                  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+                  <div class="form-row">
+                    <div class="form-field">
+                      <label for="cName"><span data-lang="en">Name</span><span data-lang="ar">الاسم</span></label>
+                      <input id="cName" name="name" type="text" required autocomplete="name" />
+                    </div>
+                    <div class="form-field">
+                      <label for="cEmail"><span data-lang="en">Your email</span><span data-lang="ar">بريدك</span></label>
+                      <input id="cEmail" name="email" type="email" required autocomplete="email" />
+                    </div>
+                  </div>
+                  <div class="form-field" style="margin-bottom: 0.85rem;">
+                    <label for="cMsg"><span data-lang="en">Message</span><span data-lang="ar">الرسالة</span></label>
+                    <textarea id="cMsg" name="message" required></textarea>
+                  </div>
+                  <div class="form-actions">
+                    <button class="btn btn-primary" type="submit" id="formSubmitBtn">
+                      <i class="bi bi-send-fill" aria-hidden="true"></i>
+                      <span data-lang="en">Send</span>
+                      <span data-lang="ar">إرسال</span>
+                    </button>
+                    <span class="form-note" id="formNote" aria-live="polite"></span>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
 
@@ -1163,8 +1396,8 @@
             <figure class="portrait-card">
               <img
                 src="assets/portrait.jpg"
-                width="168"
-                height="188"
+                width="176"
+                height="200"
                 alt="Portrait of Abdullatif Almutairi"
                 data-alt-en="Portrait of Abdullatif Almutairi"
                 data-alt-ar="صورة عبداللطيف المطيري"
@@ -1172,8 +1405,8 @@
               <figcaption class="portrait-meta">
                 <strong data-lang="en">Open to work</strong>
                 <strong data-lang="ar">متاح للعمل</strong>
-                <span data-lang="en">App Developer</span>
-                <span data-lang="ar">مطوّر تطبيقات</span>
+                <span data-lang="en">App Developer · Riyadh</span>
+                <span data-lang="ar">مطوّر تطبيقات · الرياض</span>
               </figcaption>
             </figure>
           </div>
@@ -1514,15 +1747,13 @@
       <div class="wrap">
         <div class="section-head">
           <p class="kicker"><span data-lang="en">Contact</span><span data-lang="ar">تواصل</span></p>
-          <h2 data-lang="en">Get in touch</h2>
-          <h2 data-lang="ar">للتواصل</h2>
+          <h2 data-lang="en">Let’s talk</h2>
+          <h2 data-lang="ar">خلّنا نتكلم</h2>
           <p class="lead" data-lang="en">
-            Open to junior developer, app developer, and digital product roles in Riyadh.
-            Interviews welcome · Riyadh time (UTC+3).
+            Prefer WhatsApp or a quick message from the top of the page. CV is one tap away.
           </p>
           <p class="lead" data-lang="ar">
-            متاح لأدوار مطوّر مبتدئ، ومطوّر تطبيقات، ومنتجات رقمية في الرياض.
-            المقابلات مرحّب بها · توقيت الرياض (UTC+3).
+            تقدر تتواصل واتساب أو ترسل رسالة من أعلى الصفحة. وتحميل السيرة دائماً بضغطة.
           </p>
         </div>
 
@@ -1533,132 +1764,20 @@
             target="_blank"
             rel="noopener"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.1 17.9L2 22l4.2-1.1A11 11 0 1 0 20.5 3.5zm-8.5 17a9.1 9.1 0 0 1-4.6-1.3l-.3-.2-2.5.7.7-2.4-.2-.3A9.1 9.1 0 1 1 12 20.5zm5-6.8c-.3-.1-1.6-.8-1.8-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.2-.4c.1-.2 0-.3 0-.4s-.6-1.4-.8-1.9-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3s-.8.8-.8 1.9.8 2.2.9 2.4a10.5 10.5 0 0 0 4 3.4c.5.2 1 .4 1.3.5s.9.1 1.2.1a2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .5-1.1c.1-.2 0-.3-.1-.4z"/></svg>
-            <span data-lang="en">WhatsApp me</span>
-            <span data-lang="ar">راسلني واتساب</span>
+            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+            <span data-lang="en">WhatsApp</span>
+            <span data-lang="ar">واتساب</span>
           </a>
-          <a class="btn btn-primary" href="mailto:abdullatif.almutairi@outlook.com">
-            <span data-lang="en">Email me</span>
-            <span data-lang="ar">راسلني بالبريد</span>
-          </a>
-        </div>
-
-        <form class="contact-form" id="contactForm">
-          <h3 data-lang="en">Send a message</h3>
-          <h3 data-lang="ar">أرسل رسالة</h3>
-          <!-- Web3Forms: submissions go to abdullatif.almutairi@outlook.com -->
-          <input type="hidden" name="access_key" value="fcbf2fdf-fcdf-486d-b3b3-4da5ca7afc54" />
-          <input type="hidden" name="subject" value="New message from portfolio" />
-          <input type="hidden" name="from_name" value="Abdullatif Portfolio" />
-          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
-          <div class="form-row">
-            <div class="form-field">
-              <label for="cName"><span data-lang="en">Name</span><span data-lang="ar">الاسم</span></label>
-              <input id="cName" name="name" type="text" required autocomplete="name" />
-            </div>
-            <div class="form-field">
-              <label for="cEmail"><span data-lang="en">Your email</span><span data-lang="ar">بريدك</span></label>
-              <input id="cEmail" name="email" type="email" required autocomplete="email" />
-            </div>
-          </div>
-          <div class="form-field" style="margin-bottom: 0.85rem;">
-            <label for="cMsg"><span data-lang="en">Message</span><span data-lang="ar">الرسالة</span></label>
-            <textarea id="cMsg" name="message" required></textarea>
-          </div>
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit" id="formSubmitBtn">
-              <span data-lang="en">Send message</span>
-              <span data-lang="ar">إرسال الرسالة</span>
-            </button>
-            <span class="form-note" id="formNote" data-lang="en">Sent directly from the site. No mail app needed.</span>
-            <span class="form-note" id="formNoteAr" data-lang="ar">تُرسل مباشرة من الموقع. بدون تطبيق بريد.</span>
-          </div>
-        </form>
-
-        <div class="contact-grid">
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            </div>
-            <div class="contact-item-body">
-              <div class="contact-item-text">
-                <strong data-lang="en">Email</strong>
-                <strong data-lang="ar">البريد</strong>
-                <span dir="ltr">abdullatif.almutairi@outlook.com</span>
-              </div>
-              <button
-                type="button"
-                class="copy-btn"
-                data-copy="abdullatif.almutairi@outlook.com"
-                aria-label="Copy email"
-                title="Copy"
-              >
-                <svg class="icon-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                  <rect x="9" y="9" width="11" height="11" rx="2"/>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                </svg>
-                <svg class="icon-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
-                  <path d="M20 6 9 17l-5-5"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7A2 2 0 0 1 22 16.9z"/></svg>
-            </div>
-            <div class="contact-item-body">
-              <div class="contact-item-text">
-                <strong data-lang="en">Phone</strong>
-                <strong data-lang="ar">الجوال</strong>
-                <span dir="ltr">+966 50 006 6172</span>
-              </div>
-              <button
-                type="button"
-                class="copy-btn"
-                data-copy="+966500066172"
-                aria-label="Copy phone"
-                title="Copy"
-              >
-                <svg class="icon-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                  <rect x="9" y="9" width="11" height="11" rx="2"/>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                </svg>
-                <svg class="icon-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
-                  <path d="M20 6 9 17l-5-5"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            </div>
-            <div>
-              <strong data-lang="en">Location</strong>
-              <strong data-lang="ar">الموقع</strong>
-              <span data-lang="en">Riyadh, Saudi Arabia</span>
-              <span data-lang="ar">الرياض، المملكة العربية السعودية</span>
-            </div>
-          </div>
-          <a class="contact-item" href="https://github.com/abdullatifalmutairi" target="_blank" rel="noopener">
-            <div class="contact-icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.9 9.6.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.2-4.6-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.3 9.3 0 0 1 5.1 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.7.7 1.1 1.6 1.1 2.7 0 3.9-2.4 4.8-4.6 5.1.3.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10.2 10.2 0 0 0 22 12.2C22 6.6 17.5 2 12 2z"/></svg>
-            </div>
-            <div>
-              <strong>GitHub</strong>
-              <span dir="ltr">@abdullatifalmutairi</span>
-            </div>
-          </a>
+          <button class="btn btn-primary" type="button" id="contactJumpCompose">
+            <i class="bi bi-chat-dots" aria-hidden="true"></i>
+            <span data-lang="en">Open message</span>
+            <span data-lang="ar">افتح الرسالة</span>
+          </button>
         </div>
 
         <a class="cv-download" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
           <div class="cv-download-icon" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M12 3v12"/>
-              <path d="m7 11 5 5 5-5"/>
-              <path d="M5 21h14"/>
-            </svg>
+            <i class="bi bi-download" style="font-size:1.4rem" aria-hidden="true"></i>
           </div>
           <div>
             <strong data-lang="en">Download CV</strong>
@@ -1723,10 +1842,29 @@
       var langBtn = document.getElementById("langToggle");
       var contactForm = document.getElementById("contactForm");
       var formNote = document.getElementById("formNote");
-      var formNoteAr = document.getElementById("formNoteAr");
+      var heroCompose = document.getElementById("heroCompose");
+      var composeToggle = document.getElementById("composeToggle");
+      var composeOpenBtn = document.getElementById("composeOpenBtn");
+      var contactJumpCompose = document.getElementById("contactJumpCompose");
 
       function currentLang() {
         return root.lang === "ar" ? "ar" : "en";
+      }
+
+      function setComposeOpen(open) {
+        if (!heroCompose || !composeToggle) return;
+        heroCompose.classList.toggle("is-open", !!open);
+        composeToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) {
+          var nameField = document.getElementById("cName");
+          if (nameField) setTimeout(function () { nameField.focus(); }, 80);
+        }
+      }
+
+      function openComposeFromBelow() {
+        setComposeOpen(true);
+        var top = document.getElementById("top");
+        if (top) top.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
       function applyLang(lang) {
@@ -1801,6 +1939,20 @@
         });
       });
 
+      if (composeToggle) {
+        composeToggle.addEventListener("click", function () {
+          setComposeOpen(!heroCompose.classList.contains("is-open"));
+        });
+      }
+      if (composeOpenBtn) {
+        composeOpenBtn.addEventListener("click", function () {
+          setComposeOpen(true);
+        });
+      }
+      if (contactJumpCompose) {
+        contactJumpCompose.addEventListener("click", openComposeFromBelow);
+      }
+
       if (contactForm) {
         contactForm.addEventListener("submit", function (e) {
           e.preventDefault();
@@ -1813,23 +1965,15 @@
             ? ("تواصل عبر الموقع · " + name)
             : ("Portfolio contact · " + name);
 
-          function setNotes(en, arText, ok) {
-            if (formNote) {
-              formNote.textContent = en;
-              formNote.classList.toggle("ok", !!ok);
-            }
-            if (formNoteAr) {
-              formNoteAr.textContent = arText;
-              formNoteAr.classList.toggle("ok", !!ok);
-            }
+          function setNote(text, kind) {
+            if (!formNote) return;
+            formNote.textContent = text || "";
+            formNote.classList.remove("ok", "err");
+            if (kind) formNote.classList.add(kind);
           }
 
           if (btn) btn.disabled = true;
-          setNotes(
-            ar ? "Sending..." : "Sending...",
-            "جاري الإرسال...",
-            false
-          );
+          setNote(ar ? "جاري الإرسال..." : "Sending...", null);
 
           var payload = {
             access_key: "fcbf2fdf-fcdf-486d-b3b3-4da5ca7afc54",
@@ -1852,26 +1996,13 @@
             .then(function (result) {
               if (result.ok && result.data && result.data.success) {
                 contactForm.reset();
-                setNotes(
-                  "Message sent. Thank you!",
-                  "تم إرسال الرسالة. شكراً لك!",
-                  true
-                );
+                setNote(ar ? "تم الإرسال ✓" : "Sent ✓", "ok");
               } else {
-                var err = (result.data && result.data.message) || "Send failed";
-                setNotes(
-                  "Could not send. Try WhatsApp or email instead. (" + err + ")",
-                  "تعذر الإرسال. جرّب واتساب أو البريد. (" + err + ")",
-                  false
-                );
+                setNote(ar ? "تعذر الإرسال. جرّب واتساب." : "Could not send. Try WhatsApp.", "err");
               }
             })
             .catch(function () {
-              setNotes(
-                "Network error. Try WhatsApp or email instead.",
-                "خطأ في الشبكة. جرّب واتساب أو البريد.",
-                false
-              );
+              setNote(ar ? "خطأ شبكة. جرّب واتساب." : "Network error. Try WhatsApp.", "err");
             })
             .finally(function () {
               if (btn) btn.disabled = false;
