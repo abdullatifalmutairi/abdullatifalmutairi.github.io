@@ -763,18 +763,40 @@
       font-size: 0.9rem;
       word-break: break-word;
     }
-    .contact-item .copy-btn {
-      margin-top: 0.45rem;
-      font-size: 0.78rem;
-      font-weight: 650;
-      color: var(--teal);
-      background: var(--teal-soft);
-      border: 1px solid rgba(31, 111, 120, 0.2);
-      border-radius: 999px;
-      padding: 0.25rem 0.6rem;
-      cursor: pointer;
+    .contact-item-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
     }
-    .contact-item .copy-btn:hover { filter: brightness(0.97); }
+    .contact-item-text { min-width: 0; }
+    .copy-btn {
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--line-strong);
+      background: #fff;
+      color: var(--ink-2);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+    }
+    .copy-btn:hover {
+      border-color: rgba(31, 111, 120, 0.4);
+      color: var(--teal);
+      background: rgba(31, 111, 120, 0.06);
+    }
+    .copy-btn:active { transform: scale(0.96); }
+    .copy-btn.is-copied {
+      border-color: rgba(31, 111, 120, 0.45);
+      background: var(--teal-soft);
+      color: var(--teal);
+    }
+    .copy-btn svg { display: block; }
 
     .contact-actions {
       display: grid;
@@ -951,81 +973,6 @@
       font-size: 0.9rem;
     }
 
-    /* Visitor tool */
-    .tool-panel {
-      background:
-        radial-gradient(circle at 0% 0%, rgba(31, 111, 120, 0.1), transparent 40%),
-        linear-gradient(180deg, #fffcf8, #f4eee4);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 1.4rem 1.45rem;
-      box-shadow: var(--shadow);
-    }
-    .tool-panel .tool-intro {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 58ch;
-      margin-bottom: 1rem;
-    }
-    .tool-input-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0.65rem;
-      margin-bottom: 1rem;
-    }
-    .tool-input-row input {
-      width: 100%;
-      border: 1px solid var(--line-strong);
-      border-radius: 12px;
-      background: #fff;
-      color: var(--ink);
-      font: inherit;
-      padding: 0.75rem 0.9rem;
-    }
-    .tool-input-row input:focus {
-      outline: 2px solid rgba(31, 111, 120, 0.35);
-      border-color: var(--teal);
-    }
-    .journey {
-      display: grid;
-      gap: 0.75rem;
-    }
-    .journey-step {
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 0.75rem;
-      align-items: start;
-      padding: 0.9rem 1rem;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid var(--line);
-    }
-    .journey-step .badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 0.85rem;
-      color: #f0d7a0;
-      background: linear-gradient(145deg, #1a3f46, #16324a);
-    }
-    .journey-step h4 {
-      font-size: 0.95rem;
-      color: var(--navy);
-      margin-bottom: 0.2rem;
-    }
-    .journey-step p {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-    .journey-empty {
-      color: var(--muted);
-      font-size: 0.92rem;
-      padding: 0.5rem 0.1rem;
-    }
-
     footer {
       padding: 1.6rem 0 2rem;
       color: var(--muted);
@@ -1056,7 +1003,6 @@
       .contact-actions,
       .case-grid,
       .form-row,
-      .tool-input-row,
       .cv-download {
         grid-template-columns: 1fr;
       }
@@ -1123,7 +1069,6 @@
           <a href="#about"><span data-lang="en">About</span><span data-lang="ar">نبذة</span></a>
           <a href="#experience"><span data-lang="en">Experience</span><span data-lang="ar">الخبرات</span></a>
           <a href="#work"><span data-lang="en">Project</span><span data-lang="ar">المشروع</span></a>
-          <a href="#tools"><span data-lang="en">Tool</span><span data-lang="ar">أداة</span></a>
           <a href="#skills"><span data-lang="en">Skills</span><span data-lang="ar">المهارات</span></a>
           <a href="#education"><span data-lang="en">Education</span><span data-lang="ar">التعليم</span></a>
           <a href="#contact"><span data-lang="en">Contact</span><span data-lang="ar">تواصل</span></a>
@@ -1420,50 +1365,6 @@
       </div>
     </section>
 
-    <section class="section" id="tools">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="kicker"><span data-lang="en">Interactive</span><span data-lang="ar">تفاعلي</span></p>
-          <h2 data-lang="en">App idea → user journey</h2>
-          <h2 data-lang="ar">فكرة تطبيق ← رحلة مستخدم</h2>
-          <p class="lead" data-lang="en">
-            Try a small product-thinking tool. Type an app idea and get a simple 3-step user journey.
-          </p>
-          <p class="lead" data-lang="ar">
-            جرّب أداة بسيطة لتفكير المنتج. اكتب فكرة تطبيق واحصل على رحلة مستخدم من 3 خطوات.
-          </p>
-        </div>
-
-        <div class="tool-panel">
-          <p class="tool-intro" data-lang="en">
-            Built as a portfolio demo of UX foundations: clarify the user, the first action, and the value moment.
-          </p>
-          <p class="tool-intro" data-lang="ar">
-            عرض بسيط لأساسيات تجربة المستخدم: من هو المستخدم، ماذا يفعل أولاً، وأين يشعر بالقيمة.
-          </p>
-          <div class="tool-input-row">
-            <input
-              id="ideaInput"
-              type="text"
-              maxlength="120"
-              autocomplete="off"
-              data-ph-en="e.g. app for local bakers to take pre-orders"
-              data-ph-ar="مثال: تطبيق لقبول طلبات مسبقة من المخابز المحلية"
-              placeholder="e.g. app for local bakers to take pre-orders"
-            />
-            <button class="btn btn-primary" type="button" id="ideaGo">
-              <span data-lang="en">Generate</span>
-              <span data-lang="ar">أنشئ</span>
-            </button>
-          </div>
-          <div class="journey" id="journeyOut" aria-live="polite">
-            <p class="journey-empty" data-lang="en">Your 3-step journey will appear here.</p>
-            <p class="journey-empty" data-lang="ar">ستظهر رحلة المستخدم بثلاث خطوات هنا.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="skills">
       <div class="wrap">
         <div class="section-head">
@@ -1640,13 +1541,26 @@
             <div class="contact-icon" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
             </div>
-            <div>
-              <strong data-lang="en">Email</strong>
-              <strong data-lang="ar">البريد</strong>
-              <span dir="ltr">ABLT14409@gmail.com</span>
-              <button type="button" class="copy-btn" data-copy="ABLT14409@gmail.com">
-                <span data-lang="en">Copy</span>
-                <span data-lang="ar">نسخ</span>
+            <div class="contact-item-body">
+              <div class="contact-item-text">
+                <strong data-lang="en">Email</strong>
+                <strong data-lang="ar">البريد</strong>
+                <span dir="ltr">ABLT14409@gmail.com</span>
+              </div>
+              <button
+                type="button"
+                class="copy-btn"
+                data-copy="ABLT14409@gmail.com"
+                aria-label="Copy email"
+                title="Copy"
+              >
+                <svg class="icon-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="9" y="9" width="11" height="11" rx="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                <svg class="icon-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
               </button>
             </div>
           </div>
@@ -1654,13 +1568,26 @@
             <div class="contact-icon" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7A2 2 0 0 1 22 16.9z"/></svg>
             </div>
-            <div>
-              <strong data-lang="en">Phone</strong>
-              <strong data-lang="ar">الجوال</strong>
-              <span dir="ltr">+966 50 006 6172</span>
-              <button type="button" class="copy-btn" data-copy="+966500066172">
-                <span data-lang="en">Copy</span>
-                <span data-lang="ar">نسخ</span>
+            <div class="contact-item-body">
+              <div class="contact-item-text">
+                <strong data-lang="en">Phone</strong>
+                <strong data-lang="ar">الجوال</strong>
+                <span dir="ltr">+966 50 006 6172</span>
+              </div>
+              <button
+                type="button"
+                class="copy-btn"
+                data-copy="+966500066172"
+                aria-label="Copy phone"
+                title="Copy"
+              >
+                <svg class="icon-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="9" y="9" width="11" height="11" rx="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                <svg class="icon-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
               </button>
             </div>
           </div>
@@ -1736,9 +1663,6 @@
       var toggle = document.getElementById("navToggle");
       var links = document.getElementById("navLinks");
       var langBtn = document.getElementById("langToggle");
-      var ideaInput = document.getElementById("ideaInput");
-      var ideaGo = document.getElementById("ideaGo");
-      var journeyOut = document.getElementById("journeyOut");
       var contactForm = document.getElementById("contactForm");
       var formNote = document.getElementById("formNote");
 
@@ -1759,17 +1683,11 @@
             ? (img.getAttribute("data-alt-ar") || img.alt)
             : (img.getAttribute("data-alt-en") || img.alt);
         }
-        if (ideaInput) {
-          ideaInput.placeholder = lang === "ar"
-            ? (ideaInput.getAttribute("data-ph-ar") || ideaInput.placeholder)
-            : (ideaInput.getAttribute("data-ph-en") || ideaInput.placeholder);
-        }
         langBtn.setAttribute(
           "aria-label",
           lang === "ar" ? "التبديل إلى الإنجليزية" : "Switch to Arabic"
         );
         try { localStorage.setItem("aa-lang", lang); } catch (e) {}
-        if (ideaInput && ideaInput.value.trim()) buildJourney(ideaInput.value.trim());
       }
 
       applyLang(currentLang());
@@ -1797,19 +1715,24 @@
       document.querySelectorAll(".copy-btn").forEach(function (btn) {
         btn.addEventListener("click", function () {
           var val = btn.getAttribute("data-copy") || "";
-          var doneEn = "Copied";
-          var doneAr = "تم النسخ";
-          var failEn = "Copy failed";
-          var failAr = "فشل النسخ";
+          var iconCopy = btn.querySelector(".icon-copy");
+          var iconCheck = btn.querySelector(".icon-check");
           function mark(ok) {
-            var en = btn.querySelector('[data-lang="en"]');
-            var ar = btn.querySelector('[data-lang="ar"]');
-            if (en) en.textContent = ok ? doneEn : failEn;
-            if (ar) ar.textContent = ok ? doneAr : failAr;
+            btn.classList.toggle("is-copied", !!ok);
+            if (iconCopy) iconCopy.hidden = !!ok;
+            if (iconCheck) iconCheck.hidden = !ok;
+            btn.setAttribute(
+              "aria-label",
+              ok
+                ? (currentLang() === "ar" ? "تم النسخ" : "Copied")
+                : (currentLang() === "ar" ? "نسخ" : "Copy")
+            );
             setTimeout(function () {
-              if (en) en.textContent = "Copy";
-              if (ar) ar.textContent = "نسخ";
-            }, 1600);
+              btn.classList.remove("is-copied");
+              if (iconCopy) iconCopy.hidden = false;
+              if (iconCheck) iconCheck.hidden = true;
+              btn.setAttribute("aria-label", currentLang() === "ar" ? "نسخ" : "Copy");
+            }, 1400);
           }
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(val).then(function () { mark(true); }).catch(function () { mark(false); });
@@ -1835,89 +1758,6 @@
               ? "سيتم فتح تطبيق البريد لديك."
               : "Your email app should open next.";
             formNote.classList.add("ok");
-          }
-        });
-      }
-
-      function esc(s) {
-        return String(s)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;");
-      }
-
-      function buildJourney(idea) {
-        if (!journeyOut) return;
-        var lang = currentLang();
-        var clean = idea.replace(/\s+/g, " ").trim();
-        var steps;
-        if (lang === "ar") {
-          steps = [
-            {
-              t: "اكتشف",
-              d: "المستخدم يسمع عن «" + clean + "» ويفتح التطبيق ليفهم القيمة بسرعة."
-            },
-            {
-              t: "جرّب",
-              d: "يكمل خطوة أولى واضحة (تسجيل بسيط أو تصفح) ويصل لنتيجة مفيدة خلال دقائق."
-            },
-            {
-              t: "يعود",
-              d: "يحصل على تذكير أو تحديث ذي صلة فيعود لأنه رأى فائدة حقيقية."
-            }
-          ];
-        } else {
-          steps = [
-            {
-              t: "Discover",
-              d: "A user hears about “" + clean + "” and opens the app to understand the value in seconds."
-            },
-            {
-              t: "Try",
-              d: "They complete one clear first action (quick signup or browse) and get a useful result fast."
-            },
-            {
-              t: "Return",
-              d: "A relevant reminder or update brings them back because the first value felt real."
-            }
-          ];
-        }
-        journeyOut.innerHTML = steps.map(function (s, i) {
-          return (
-            '<div class="journey-step">' +
-              '<div class="badge">' + (i + 1) + "</div>" +
-              "<div>" +
-                "<h4>" + esc(s.t) + "</h4>" +
-                "<p>" + esc(s.d) + "</p>" +
-              "</div>" +
-            "</div>"
-          );
-        }).join("");
-      }
-
-      function runIdea() {
-        var idea = (ideaInput && ideaInput.value || "").trim();
-        if (!idea) {
-          if (journeyOut) {
-            journeyOut.innerHTML =
-              '<p class="journey-empty">' +
-              (currentLang() === "ar"
-                ? "اكتب فكرة تطبيق أولاً."
-                : "Type an app idea first.") +
-              "</p>";
-          }
-          return;
-        }
-        buildJourney(idea);
-      }
-
-      if (ideaGo) ideaGo.addEventListener("click", runIdea);
-      if (ideaInput) {
-        ideaInput.addEventListener("keydown", function (e) {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            runIdea();
           }
         });
       }
