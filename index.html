@@ -299,14 +299,38 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
+      flex: 1 1 auto;
       gap: 0;
       margin-top: 0;
     }
-    /* Pin to the card bottom — sits flush under the content column */
-    .hero-bottom {
-      margin-top: auto;
+    .hero-about {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .hero-about .hero-copy {
+      margin-bottom: 0.65rem;
+    }
+    .hero-about .hero-actions-cv {
       margin-bottom: 0;
-      padding: 0.65rem 0 0;
+    }
+    .hero-contact-block {
+      margin-top: auto;
+      padding-top: 0.85rem; /* small gap under definition only */
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .hero-contact-block .hero-actions-contact {
+      margin-bottom: 0;
+    }
+    .hero-contact-block .hero-chips {
+      margin-bottom: 0;
+    }
+    .hero-bottom {
+      margin-top: 0.15rem;
+      margin-bottom: 0;
+      padding: 0.45rem 0 0;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -395,9 +419,15 @@
       position: relative;
       min-height: 0;
       overflow: hidden;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
     }
     .hero-stage-default {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0;
       opacity: 1;
       transform: translateY(0) scale(1);
       filter: blur(0);
@@ -432,6 +462,7 @@
       transform: translateY(-18px) scale(0.96);
       filter: blur(3px);
       max-height: 0;
+      flex: 0 0 auto;
       pointer-events: none;
       visibility: hidden;
       transition:
@@ -1786,6 +1817,7 @@
 <div class="hero-body">
             <div class="hero-stage" id="heroStage">
               <div class="hero-stage-default" id="heroDefault">
+                <div class="hero-about">
                 <p class="hero-copy" data-lang="en">
                   Diploma graduate in Smart Device Application Development.
                   I build mobile-minded products with clear UX thinking, practical problem-solving,
@@ -1796,7 +1828,16 @@
                   أبني تطبيقات للجوال بتفكير واضح في تجربة المستخدم، وحلول عملية،
                   واهتمام بالتفاصيل.
                 </p>
+                <div class="hero-actions hero-actions-cv">
+                  <a class="btn btn-primary" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
+                    <i class="bi bi-download" aria-hidden="true"></i>
+                    <span data-lang="en">Download CV</span>
+                    <span data-lang="ar">تحميل السيرة</span>
+                  </a>
+                </div>
+                </div>
 
+                <div class="hero-contact-block">
                 <div class="hero-actions hero-actions-contact">
                   <button class="btn btn-msg" type="button" id="composeOpenBtn" aria-expanded="false" aria-controls="heroCompose">
                     <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
@@ -1818,13 +1859,6 @@
                     <span data-lang="en">Call</span>
                     <span data-lang="ar">اتصل</span>
                     <span dir="ltr" class="btn-phone-num">+966 50 006 6172</span>
-                  </a>
-                </div>
-                <div class="hero-actions hero-actions-cv">
-                  <a class="btn btn-primary" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
-                    <i class="bi bi-download" aria-hidden="true"></i>
-                    <span data-lang="en">Download CV</span>
-                    <span data-lang="ar">تحميل السيرة</span>
                   </a>
                 </div>
 
@@ -1864,6 +1898,13 @@
                     <i class="bi bi-github" aria-hidden="true"></i>
                     <a href="https://github.com/abdullatifalmutairi" target="_blank" rel="noopener">@abdullatifalmutairi</a>
                   </span>
+                </div>
+                <div class="hero-bottom">
+              <strong data-lang="en">Open to junior roles</strong>
+              <strong data-lang="ar">متاح لفرص المبتدئين</strong>
+              <span data-lang="en">· Mobile · Product · Riyadh</span>
+              <span data-lang="ar">· تطبيقات · منتج · الرياض</span>
+            </div>
                 </div>
               </div>
 
@@ -1917,14 +1958,7 @@
               </div>
             </div>
           </div>
-            <div class="hero-bottom">
-              <strong data-lang="en">Open to junior roles</strong>
-              <strong data-lang="ar">متاح لفرص المبتدئين</strong>
-              <span data-lang="en">· Mobile · Product · Riyadh</span>
-              <span data-lang="ar">· تطبيقات · منتج · الرياض</span>
-            </div>
-
-          </div>
+</div>
 <div class="portrait-wrap">
               <figure class="portrait-card">
                 <img
