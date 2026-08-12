@@ -33,8 +33,9 @@
       --gold: #b8893d;
       --gold-soft: rgba(184, 137, 61, 0.14);
       --focus: #1f6f78;
-      /* content column; section backgrounds still full-bleed to the edges */
-      --max: 1120px;
+      /* Wide content again; page shell can be wider than this */
+      --max: 1240px;
+      --page-max: 1520px;
       --nav-h: 68px;
       --radius: 14px;
       --shadow: 0 10px 30px rgba(18, 32, 51, 0.08);
@@ -44,13 +45,32 @@
       --sec-cool: #e8f0ef;
       --sec-deep: #e3ebea;
       --sec-cta: #e5f2f0;
+      /* Side rails (visible outside the page sheet) */
+      --side: #122033;
+      --side-2: #1a3d42;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      /* Side rails: navy/teal frame around a wide content sheet */
+      background:
+        radial-gradient(ellipse 42% 36% at 0% 18%, rgba(31, 111, 120, 0.4), transparent 58%),
+        radial-gradient(ellipse 42% 36% at 100% 82%, rgba(184, 137, 61, 0.2), transparent 58%),
+        linear-gradient(180deg, var(--side) 0%, #0f1b28 42%, var(--side-2) 100%);
+      padding-inline: 0;
+    }
+    @media (min-width: 900px) {
+      html {
+        /* Always show a bit of side color on tablet+ without shrinking content hard */
+        padding-inline: clamp(14px, 2.6vw, 40px);
+      }
+    }
     body {
       font-family: Inter, system-ui, -apple-system, sans-serif;
-      /* Solid base so side gutters match section bands (no “empty frame”) */
+      /* Wide sheet fills the frame — content stays broad like before */
+      width: min(100%, var(--page-max));
+      margin-inline: auto;
       background: var(--sec-warm);
       color: var(--ink);
       line-height: 1.65;
@@ -58,14 +78,18 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       min-height: 100%;
+      position: relative;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.07),
+        0 0 70px rgba(0, 0, 0, 0.32);
     }
     body::before {
       content: "";
-      position: fixed;
+      position: absolute;
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.22;
+      opacity: 0.16;
       background-image:
         linear-gradient(rgba(18, 32, 51, 0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(18, 32, 51, 0.035) 1px, transparent 1px);
@@ -90,7 +114,7 @@
     html[lang="ar"] [data-lang="en"] { display: none !important; }
 
     .wrap {
-      width: min(var(--max), calc(100% - 2rem));
+      width: min(var(--max), calc(100% - 2.75rem));
       margin-inline: auto;
       position: relative;
       z-index: 1;
@@ -115,7 +139,7 @@
       background: rgba(255, 252, 248, 0.96);
     }
     .nav-inner {
-      width: min(var(--max), calc(100% - 2rem));
+      width: min(var(--max), calc(100% - 2.75rem));
       margin-inline: auto;
       display: flex;
       align-items: center;
@@ -639,9 +663,9 @@
     }
     .lead {
       color: var(--muted);
-      font-size: 0.97rem;
-      line-height: 1.55;
-      max-width: min(72ch, 100%);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      max-width: none; /* use full content width again */
     }
 
     .grid-2 {
@@ -1245,7 +1269,7 @@
     }
     footer a { color: rgba(238, 243, 248, 0.78); }
     .footer-inner {
-      width: min(var(--max), calc(100% - 2rem));
+      width: min(var(--max), calc(100% - 2.75rem));
       margin-inline: auto;
       display: flex;
       justify-content: space-between;
