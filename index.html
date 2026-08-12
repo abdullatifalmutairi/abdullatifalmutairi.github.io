@@ -253,9 +253,10 @@
     }
     .hero-panel {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) clamp(220px, 26%, 280px);
-      gap: 1rem 1.25rem;
-      align-items: stretch; /* equal columns: photo matches text height */
+      /* Text takes what it needs; photo sits close (kills gap 1 + 2) */
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 32%);
+      gap: 0.85rem 1.1rem;
+      align-items: start;
       min-height: 0;
       background:
         radial-gradient(circle at 100% 0%, rgba(31, 111, 120, 0.14), transparent 42%),
@@ -263,7 +264,7 @@
         linear-gradient(160deg, #16304a 0%, #122033 48%, #1a3d42 100%);
       color: #eef3f8;
       border-radius: 22px;
-      padding: 1.3rem 1.35rem 1.3rem 1.65rem;
+      padding: 1.2rem 1.25rem 1.2rem 1.5rem;
       box-shadow: 0 22px 50px rgba(12, 24, 40, 0.28);
       border: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
@@ -271,11 +272,10 @@
     }
     .hero-content {
       min-width: 0;
-      min-height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: 0.55rem;
+      gap: 0.45rem;
       padding: 0;
     }
     .hero-intro {
@@ -289,7 +289,7 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 0.4rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
     .hero-pills .eyebrow,
     .hero-pills .hero-status {
@@ -299,19 +299,18 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      flex: 1 1 auto;
       gap: 0;
       margin-top: 0;
     }
-    /* Soft bottom strip fills leftover height under chips (no empty navy hole) */
+    /* Compact footer under chips — no margin-top:auto (that was gap 3) */
     .hero-bottom {
-      margin-top: auto;
-      padding-top: 0.85rem;
+      margin-top: 0.55rem;
+      padding-top: 0.55rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0.45rem 0.75rem;
-      font-size: 0.8rem;
+      gap: 0.35rem 0.65rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: rgba(238, 243, 248, 0.55);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -320,8 +319,8 @@
       color: #f0d7a0;
       font-weight: 700;
     }
-    .hero-bottom span[dir="ltr"] {
-      color: rgba(238, 243, 248, 0.45);
+    .hero-bottom span {
+      color: rgba(238, 243, 248, 0.48);
       font-weight: 500;
     }
     .hero-panel.is-composing .hero-bottom {
@@ -377,18 +376,18 @@
     }
     .hero-copy {
       color: rgba(238, 243, 248, 0.78);
-      font-size: 0.96rem;
-      max-width: 48ch;
-      margin-bottom: 0.85rem;
-      line-height: 1.55;
+      font-size: 0.95rem;
+      max-width: none; /* use full text column width toward the photo */
+      margin-bottom: 0.7rem;
+      line-height: 1.5;
     }
-    html[lang="ar"] .hero-copy { max-width: 52ch; }
+    html[lang="ar"] .hero-copy { max-width: none; }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 0.7rem;
+      gap: 0.45rem;
+      margin-bottom: 0.55rem;
     }
     /* Stage swap: richer open/close animation for راسلني */
     .hero-stage {
@@ -520,11 +519,11 @@
     .hero-panel.is-composing .portrait-meta strong { font-size: 0.78rem; }
     .hero-panel.is-composing .portrait-meta span { font-size: 0.7rem; }
     .hero-panel.is-composing {
-      grid-template-columns: minmax(0, 1fr) clamp(220px, 28%, 300px);
-      padding: 1.25rem 1.3rem 1.25rem 1.6rem;
+      grid-template-columns: minmax(0, 1fr) minmax(200px, 30%);
+      padding: 1.15rem 1.2rem 1.15rem 1.4rem;
     }
     .hero-panel.is-composing .hero-content {
-      gap: 0.85rem;
+      gap: 0.55rem;
       padding: 0;
     }
     @media (prefers-reduced-motion: reduce) {
@@ -708,17 +707,15 @@
     .hero-stage-compose .form-note.err { color: #f0b4b4; }
     .hero-stage-compose .btn { min-height: 40px; padding: 0.5rem 0.95rem; }
 
-    /* Desktop portrait: fills the shared row height next to text */
+    /* Desktop portrait: tall card, height from image ratio (not stretched empty) */
     .portrait-wrap {
-      width: auto;
+      width: 100%;
+      max-width: 280px;
       min-width: 0;
-      min-height: 0;
-      height: 100%;
-      align-self: stretch;
+      justify-self: end;
+      align-self: start;
     }
     .portrait-card {
-      height: 100%;
-      min-height: 100%;
       display: flex;
       flex-direction: column;
       background: rgba(255,255,255,0.06);
@@ -739,9 +736,9 @@
     }
     .portrait-card img {
       width: 100%;
-      flex: 1 1 auto;
-      height: 100%;
-      min-height: 0;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      max-height: 340px;
       object-fit: cover;
       object-position: center 12%;
       background: #24384f;
@@ -749,7 +746,7 @@
     }
     .portrait-meta {
       flex-shrink: 0;
-      padding: 0.65rem 0.75rem 0.75rem;
+      padding: 0.6rem 0.7rem 0.7rem;
       border-top: 1px solid rgba(255,255,255,0.1);
       text-align: center;
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.12));
