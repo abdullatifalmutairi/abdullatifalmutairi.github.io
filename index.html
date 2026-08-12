@@ -254,7 +254,7 @@
     /* Hero: content + full-height photo, contact bar under both */
     .hero-panel {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 240px;
+      grid-template-columns: minmax(0, 1fr) 250px;
       grid-template-rows: auto auto;
       gap: 0 1rem;
       align-items: stretch;
@@ -312,33 +312,40 @@
     .hero-about .hero-copy {
       margin-bottom: 0;
     }
+    /* Photo column: same height as left content, CV sits ON the image */
     .portrait-wrap {
       grid-column: 2;
       grid-row: 1;
       align-self: stretch;
-      width: 240px;
+      justify-self: end;
+      width: 250px;
       max-width: 100%;
       min-height: 0;
       height: 100%;
-      justify-self: end;
-      padding-bottom: 0.85rem; /* matches content bottom so photo ends above contact bar */
+      position: relative;
+      /* space above contact bar (matches .hero-content bottom padding) */
+      margin: 0 0 0.85rem;
+      padding: 0;
+      box-sizing: border-box;
     }
-    /* CV overlays lower part of the photo */
+    /* CV control: overlaid on the lower edge of the photo itself */
     .hero-cv-btn {
       position: absolute;
       left: 50%;
-      bottom: 0.75rem;
+      bottom: 0.7rem;
       transform: translateX(-50%);
-      z-index: 3;
-      width: calc(100% - 1.2rem);
-      max-width: 200px;
+      z-index: 4;
+      width: calc(100% - 1.1rem);
+      max-width: none;
       justify-content: center;
-      min-height: 42px;
-      padding: 0.55rem 0.85rem;
+      min-height: 44px;
+      padding: 0.55rem 0.75rem;
       font-size: 0.86rem;
+      border-radius: 12px;
+      pointer-events: auto;
       box-shadow:
-        0 10px 28px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+        0 12px 30px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.14) inset;
     }
     .hero-cv-btn:hover {
       transform: translateX(-50%) translateY(-1px);
@@ -377,7 +384,7 @@
       grid-template-rows: auto;
     }
     .hero-panel.is-composing .portrait-wrap {
-      padding-bottom: 0;
+      margin-bottom: 0;
     }
     .hero-panel::before {
       content: "";
@@ -586,6 +593,7 @@
     }
     .hero-panel.is-composing .portrait-wrap {
       width: 200px;
+      margin-bottom: 0;
     }
     .hero-panel.is-composing .hero-stage-default {
       display: none !important;
@@ -830,16 +838,18 @@
     .hero-stage-compose .btn { min-height: 40px; padding: 0.5rem 0.95rem; }
 
     .portrait-card {
-      height: 100%;
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
+      /* fill the stretched wrap so photo height = left content height */
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      height: auto;
+      min-height: 0;
+      display: block;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.26);
-      position: relative;
     }
     .portrait-card::before {
       content: "";
@@ -850,25 +860,26 @@
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
       z-index: 1;
     }
-    /* dark fade so the CV button stays readable over the photo */
+    /* dark fade over lower photo so CV stays readable on the image */
     .portrait-card::after {
       content: "";
       position: absolute;
       left: 0;
       right: 0;
       bottom: 0;
-      height: 42%;
-      background: linear-gradient(180deg, transparent, rgba(8, 14, 24, 0.72));
+      height: 48%;
+      background: linear-gradient(180deg, transparent 0%, rgba(8, 14, 24, 0.55) 55%, rgba(8, 14, 24, 0.82) 100%);
       z-index: 2;
       pointer-events: none;
     }
     .portrait-card img {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      flex: 1 1 auto;
       height: 100%;
-      min-height: 100%;
+      min-height: 0;
       object-fit: cover;
-      object-position: center 12%;
+      object-position: center 10%;
       background: #24384f;
       display: block;
     }
@@ -1668,10 +1679,13 @@
       }
       .portrait-wrap {
         grid-area: photo;
-        width: 112px;
-        height: auto;
+        width: 118px;
+        height: 148px;
+        min-height: 148px;
         justify-self: start;
         align-self: start;
+        padding-bottom: 0;
+        position: relative;
       }
       .hero-intro {
         grid-area: intro;
@@ -1690,35 +1704,30 @@
         margin: 0;
         padding: 0.65rem 0.95rem 0.7rem;
       }
-      .portrait-wrap {
-        width: 112px;
-        height: auto;
-        padding-bottom: 0;
-      }
       .portrait-card {
-        height: auto;
-        min-height: 0;
+        position: absolute;
+        inset: 0;
+        bottom: 0;
         border-radius: 14px;
       }
       .portrait-card img {
-        flex: none;
-        height: 148px;
-        min-height: 0;
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        width: 100%;
       }
       .portrait-card::after {
-        height: 48%;
+        height: 55%;
       }
       .hero-cv-btn {
-        bottom: 0.45rem;
-        width: calc(100% - 0.7rem);
+        bottom: 0.4rem;
+        width: calc(100% - 0.55rem);
         max-width: none;
-        min-height: 34px;
-        padding: 0.4rem 0.4rem;
-        font-size: 0.72rem;
-        border-radius: 10px;
-      }
-      .hero-cv-btn span[data-lang] {
-        /* keep short label readable on small photo */
+        min-height: 32px;
+        padding: 0.35rem 0.3rem;
+        font-size: 0.68rem;
+        border-radius: 9px;
+        gap: 0.25rem;
       }
       .hero-panel.is-composing {
         grid-template-columns: 100px minmax(0, 1fr);
@@ -1727,8 +1736,11 @@
           "body body";
         padding-bottom: 1rem;
       }
-      .hero-panel.is-composing .portrait-wrap { width: 100px; }
-      .hero-panel.is-composing .portrait-card img { height: 120px; }
+      .hero-panel.is-composing .portrait-wrap {
+        width: 100px;
+        height: 126px;
+        min-height: 126px;
+      }
       /* Pills side-by-side, centered */
       .hero-intro .eyebrow,
       .hero-intro .hero-status {
