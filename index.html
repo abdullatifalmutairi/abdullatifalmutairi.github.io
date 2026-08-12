@@ -252,6 +252,17 @@
       display: flex;
       flex-direction: column;
     }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.85rem;
+    }
+    .hero-pills .eyebrow,
+    .hero-pills .hero-status {
+      margin-bottom: 0;
+    }
     .hero-body {
       min-width: 0;
     }
@@ -1326,20 +1337,19 @@
         grid-template-columns: 1fr;
       }
       .grid-3 { grid-template-columns: 1fr; }
-      /* Mobile: name + photo side by side at the top */
+      /* Mobile: bigger photo + name block; pills in one centered row */
       .hero-panel {
         gap: 1rem;
       }
       .hero-top {
-        grid-template-columns: 108px minmax(0, 1fr);
-        gap: 0.85rem 0.95rem;
+        grid-template-columns: 132px minmax(0, 1fr);
+        gap: 0.9rem 1rem;
         align-items: center;
       }
-      /* Photo first column (start side in LTR / end side handled by RTL grid) */
       .portrait-wrap {
         grid-column: 1;
         grid-row: 1;
-        width: 108px;
+        width: 132px;
         justify-self: start;
         align-self: center;
       }
@@ -1347,47 +1357,59 @@
         grid-column: 2;
         grid-row: 1;
         justify-content: center;
-        gap: 0;
+        align-items: center;
+        text-align: center;
+        gap: 0.35rem;
         min-width: 0;
       }
       .portrait-meta { display: none; }
       .portrait-card {
-        border-radius: 18px;
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
+        border-radius: 20px;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
       }
       .portrait-card img {
-        height: 128px;
+        height: 158px;
         object-position: center 12%;
       }
-      .hero-intro .eyebrow {
-        margin-bottom: 0.4rem;
-        padding: 0.28rem 0.6rem;
+      /* Pills side-by-side, centered */
+      .hero-intro .eyebrow,
+      .hero-intro .hero-status {
+        display: inline-flex;
+        margin-bottom: 0;
+        align-self: center;
+        padding: 0.3rem 0.62rem;
         font-size: 0.7rem;
       }
-      .hero-intro .hero-status {
-        margin-bottom: 0.45rem;
-        padding: 0.28rem 0.55rem;
-        font-size: 0.72rem;
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.4rem;
+        width: 100%;
       }
       .hero-intro h1 {
-        font-size: clamp(1.35rem, 5.8vw, 1.7rem);
-        margin-bottom: 0.2rem;
+        font-size: clamp(1.4rem, 5.6vw, 1.75rem);
+        margin-bottom: 0;
         line-height: 1.2;
+        text-align: center;
       }
       .hero-intro .hero-role {
         margin-bottom: 0;
         font-size: 0.92rem;
+        text-align: center;
       }
       .hero-actions {
-        justify-content: flex-start;
+        justify-content: center;
       }
       .hero-chips {
-        justify-content: flex-start;
+        justify-content: center;
       }
       .hero-copy {
         max-width: none;
         margin-bottom: 1rem;
         font-size: 0.92rem;
+        text-align: start;
       }
       .hero-body {
         border-top: 1px solid rgba(255,255,255,0.08);
@@ -1471,14 +1493,16 @@
         <div class="hero-panel" id="heroPanel">
           <div class="hero-top">
             <div class="hero-intro">
-              <p class="eyebrow">
-                <span data-lang="en">Portfolio · Riyadh</span>
-                <span data-lang="ar">أعمال · الرياض</span>
-              </p>
-              <div class="hero-status">
-                <i aria-hidden="true"></i>
-                <span data-lang="en">Open to work</span>
-                <span data-lang="ar">متاح للعمل</span>
+              <div class="hero-pills">
+                <p class="eyebrow">
+                  <span data-lang="en">Portfolio · Riyadh</span>
+                  <span data-lang="ar">أعمال · الرياض</span>
+                </p>
+                <div class="hero-status">
+                  <i aria-hidden="true"></i>
+                  <span data-lang="en">Open to work</span>
+                  <span data-lang="ar">متاح للعمل</span>
+                </div>
               </div>
               <h1 data-lang="en">Abdullatif Almutairi</h1>
               <h1 data-lang="ar">عبداللطيف المطيري</h1>
