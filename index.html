@@ -1664,29 +1664,32 @@
         grid-template-columns: 1fr;
       }
       .grid-3 { grid-template-columns: 1fr; }
-      /* Mobile: photo + name, then body, then full-width contact bar */
+      /* Mobile: much larger photo beside name (capped, never full card width) */
       .hero-panel {
         display: grid;
-        grid-template-columns: 112px minmax(0, 1fr);
+        /* % is of content box; 64% ≈ 200px on iPhone, name keeps the rest */
+        grid-template-columns: min(205px, 64%) minmax(0, 1fr);
         grid-template-areas:
           "photo intro"
           "body body"
           "contact contact";
-        gap: 0.6rem 0.7rem;
-        padding: 1rem 0.95rem 0;
+        gap: 0.65rem 0.65rem;
+        padding: 0.95rem 0.8rem 0;
         border-radius: 18px;
-        align-items: start;
+        align-items: center;
       }
       .hero-content {
         display: contents;
       }
       .portrait-wrap {
         grid-area: photo;
-        width: 118px;
-        height: 148px;
-        min-height: 148px;
-        justify-self: start;
-        align-self: start;
+        width: 100%;
+        max-width: none;
+        aspect-ratio: 4 / 5;
+        height: auto;
+        min-height: 0;
+        justify-self: stretch;
+        align-self: center;
         padding-bottom: 0;
         position: relative;
       }
@@ -1698,7 +1701,7 @@
       }
       .hero-body {
         grid-area: body;
-        padding: 0.45rem 0 0;
+        padding: 0.5rem 0 0;
         border-top: 1px solid rgba(255,255,255,0.08);
         gap: 0.45rem;
       }
@@ -1711,7 +1714,7 @@
         position: absolute;
         inset: 0;
         bottom: 0;
-        border-radius: 14px;
+        border-radius: 16px;
       }
       .portrait-card img {
         position: absolute;
@@ -1720,31 +1723,26 @@
         width: 100%;
       }
       .portrait-card::after {
-        height: 55%;
+        height: 42%;
       }
       .hero-cv-btn {
-        left: 0.3rem;
-        right: 0.3rem;
-        bottom: 0.4rem;
+        left: 0.45rem;
+        right: 0.45rem;
+        bottom: 0.5rem;
         width: auto;
         max-width: none;
-        min-height: 32px;
-        padding: 0.35rem 0.3rem;
-        font-size: 0.68rem;
-        border-radius: 9px;
-        gap: 0.25rem;
+        min-height: 38px;
+        padding: 0.45rem 0.5rem;
+        font-size: 0.8rem;
+        border-radius: 11px;
+        gap: 0.35rem;
       }
       .hero-panel.is-composing {
-        grid-template-columns: 100px minmax(0, 1fr);
+        grid-template-columns: min(140px, 40%) minmax(0, 1fr);
         grid-template-areas:
           "photo intro"
           "body body";
         padding-bottom: 1rem;
-      }
-      .hero-panel.is-composing .portrait-wrap {
-        width: 100px;
-        height: 126px;
-        min-height: 126px;
       }
       /* Pills side-by-side, centered */
       .hero-intro .eyebrow,
