@@ -24,7 +24,7 @@
     body {
       font-family: "DM Sans", system-ui, sans-serif;
       color: var(--ink);
-      background: #e8eeeB;
+      background: #e8eeeb;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
@@ -55,13 +55,15 @@
       border-radius: 18px;
       box-shadow: 0 18px 50px rgba(18, 32, 27, 0.12);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .hero {
       display: grid;
       grid-template-columns: 112px 1fr;
-      gap: 1.15rem;
-      padding: 1.35rem 1.5rem 1.15rem;
+      gap: 1.1rem;
+      padding: 1.2rem 1.45rem 1rem;
       background:
         radial-gradient(circle at 100% 0%, rgba(15, 159, 110, 0.12), transparent 40%),
         linear-gradient(180deg, #f7fbf9 0%, #ffffff 100%);
@@ -76,101 +78,132 @@
     }
     .hero h1 {
       font-family: Syne, sans-serif;
-      font-size: 1.75rem; letter-spacing: -0.03em; line-height: 1.05;
-      margin-bottom: 0.15rem;
+      font-size: 1.7rem; letter-spacing: -0.03em; line-height: 1.05;
+      margin-bottom: 0.12rem;
     }
     .role {
       color: var(--emerald-deep);
       font-weight: 700; font-size: 0.95rem;
-      letter-spacing: 0.04em; margin-bottom: 0.5rem;
+      letter-spacing: 0.04em; margin-bottom: 0.4rem;
     }
     .contacts {
-      display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem;
-      color: var(--muted); font-size: 0.86rem;
+      display: flex; flex-wrap: wrap; gap: 0.2rem 0.85rem;
+      color: var(--muted); font-size: 0.84rem;
     }
-    .contacts span { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .contacts span { display: inline-flex; align-items: center; gap: 0.3rem; }
     .summary {
-      margin-top: 0.55rem;
+      margin-top: 0.45rem;
       color: var(--muted);
-      font-size: 0.88rem;
-      max-width: 68ch;
+      font-size: 0.86rem;
+      max-width: 72ch;
       line-height: 1.45;
     }
 
     .body {
       display: grid;
-      grid-template-columns: 1.45fr 0.9fr;
+      grid-template-columns: 1.42fr 0.92fr;
       gap: 0;
+      flex: 1;
+      align-items: stretch;
     }
-    .main { padding: 1.1rem 1.5rem 1.25rem; }
+    .main {
+      padding: 1rem 1.4rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      justify-content: flex-start;
+    }
     .side {
-      padding: 1.1rem 1.15rem 1.25rem;
+      padding: 1rem 1.1rem 1.1rem;
       background: var(--soft);
       border-left: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .side .block-availability {
+      margin-top: auto;
+      padding-top: 0.35rem;
     }
 
-    .block + .block { margin-top: 0.95rem; }
     .block h2 {
       font-family: Syne, sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--emerald-deep);
       border-bottom: 2px solid rgba(15, 159, 110, 0.18);
-      padding-bottom: 0.28rem;
-      margin-bottom: 0.6rem;
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
     }
 
-    .item + .item { margin-top: 0.7rem; }
+    .item + .item { margin-top: 0.65rem; }
     .item-head {
       display: flex; justify-content: space-between; gap: 0.75rem;
       align-items: baseline; flex-wrap: wrap;
     }
     .item h3 {
-      font-size: 0.94rem; font-weight: 700; letter-spacing: -0.01em;
+      font-size: 0.92rem; font-weight: 700; letter-spacing: -0.01em;
     }
-    .item .org { color: var(--gold); font-weight: 600; font-size: 0.86rem; }
+    .item .org { color: var(--gold); font-weight: 600; font-size: 0.85rem; }
     .item .when {
-      color: var(--muted); font-size: 0.78rem; font-weight: 600;
+      color: var(--muted); font-size: 0.76rem; font-weight: 600;
       white-space: nowrap;
     }
     .item .sub {
-      color: var(--muted); font-size: 0.84rem; margin: 0.1rem 0 0.3rem;
+      color: var(--muted); font-size: 0.82rem; margin: 0.08rem 0 0.28rem;
     }
     .item ul {
       padding-left: 1.05rem;
       color: var(--muted);
-      font-size: 0.84rem;
-      display: grid; gap: 0.18rem;
+      font-size: 0.83rem;
+      display: grid; gap: 0.16rem;
     }
     .item li::marker { color: var(--emerald); }
 
-    .chips { display: flex; flex-wrap: wrap; gap: 0.28rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.26rem; }
     .chip {
-      font-size: 0.74rem; font-weight: 600;
-      padding: 0.22rem 0.48rem;
+      font-size: 0.72rem; font-weight: 600;
+      padding: 0.2rem 0.46rem;
       border-radius: 999px;
       background: #fff;
       border: 1px solid var(--line);
       color: var(--ink);
     }
     .side .block p {
-      color: var(--muted); font-size: 0.82rem;
+      color: var(--muted); font-size: 0.8rem;
       line-height: 1.4;
     }
     .lang-row, .hobby-row {
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
     }
     .pill {
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 0.35rem 0.55rem;
-      font-size: 0.8rem; font-weight: 600;
+      padding: 0.32rem 0.5rem;
+      font-size: 0.78rem; font-weight: 600;
     }
     .pill small {
-      display: block; font-weight: 500; color: var(--muted); font-size: 0.7rem;
+      display: block; font-weight: 500; color: var(--muted); font-size: 0.68rem;
     }
+
+    .foot {
+      margin-top: auto;
+      padding: 0.7rem 1.4rem;
+      border-top: 1px solid var(--line);
+      background: linear-gradient(180deg, #f7fbf9, #eef6f2);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .foot strong { color: var(--emerald-deep); font-weight: 700; }
+    .foot a { color: var(--ink); font-weight: 650; }
 
     @media (max-width: 760px) {
       .hero, .body { grid-template-columns: 1fr; }
@@ -181,30 +214,62 @@
     @media print {
       body { background: #fff; }
       .toolbar { display: none !important; }
+      html, body { font-size: 11.6px; height: 100%; }
+      @page { size: A4; margin: 7mm; }
       .sheet {
-        width: 100%; margin: 0; border-radius: 0;
-        box-shadow: none;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none !important;
+        height: 283mm;
+        min-height: 283mm;
       }
       a { color: inherit; text-decoration: none; }
-      @page { size: A4; margin: 7mm; }
-
-    @media print {
-      html, body { font-size: 12.5px; }
-      .sheet { box-shadow: none !important; }
-      .hero { grid-template-columns: 96px 1fr; gap: 0.85rem; padding: 0 0 0.7rem !important; }
+      /* Keep two-column CV even if the print engine uses a narrow viewport */
+      .hero {
+        grid-template-columns: 96px 1fr !important;
+        gap: 0.85rem;
+        padding: 0 0 0.7rem !important;
+        background: linear-gradient(180deg, #f7fbf9 0%, #ffffff 100%) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .body {
+        grid-template-columns: 1.38fr 0.95fr !important;
+        flex: 1 1 auto;
+        min-height: 0;
+        align-items: stretch;
+      }
+      .side {
+        border-left: 1px solid var(--line) !important;
+        border-top: 0 !important;
+        background: var(--soft) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 0.75rem 0.85rem 0.65rem !important;
+        gap: 0.72rem;
+      }
       .photo { width: 96px; height: 116px; border-radius: 12px; }
-      .hero h1 { font-size: 1.45rem; }
-      .summary { font-size: 0.82rem; margin-top: 0.4rem; }
-      .main { padding: 0.75rem 1.1rem 0.6rem !important; }
-      .side { padding: 0.75rem 0.9rem 0.6rem !important; }
-      .block + .block { margin-top: 0.7rem; }
-      .block h2 { margin-bottom: 0.4rem; font-size: 0.68rem; }
-      .item ul { gap: 0.1rem; }
-      .chip { padding: 0.16rem 0.4rem; font-size: 0.7rem; }
-    }
-
-      .hero { padding: 0.9rem 0 0.85rem; }
-      .main, .side { padding-top: 0.85rem; padding-bottom: 0.85rem; }
+      .hero h1 { font-size: 1.4rem; }
+      .summary { font-size: 0.82rem; margin-top: 0.35rem; line-height: 1.45; }
+      .main {
+        padding: 0.75rem 1.05rem 0.65rem !important;
+        gap: 0.78rem;
+      }
+      .block h2 { margin-bottom: 0.36rem; font-size: 0.66rem; }
+      .item ul { gap: 0.14rem; font-size: 0.82rem; }
+      .item h3 { font-size: 0.9rem; }
+      .chip { padding: 0.15rem 0.38rem; font-size: 0.68rem; }
+      .side .block-availability {
+        margin-top: auto;
+        padding-top: 0.4rem;
+      }
+      .foot {
+        padding: 0.55rem 1.05rem;
+        background: #eef6f2 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
     }
   </style>
 </head>
@@ -225,11 +290,13 @@
           <span>Riyadh, Saudi Arabia</span>
           <span><a href="tel:+966500066172">+966 50 006 6172</a></span>
           <span><a href="mailto:abdullatif.almutairi@outlook.com">abdullatif.almutairi@outlook.com</a></span>
+          <span><a href="https://github.com/abdullatifalmutairi">github.com/abdullatifalmutairi</a></span>
         </div>
         <p class="summary">
           Applied College graduate with a Diploma in Smart Device Application Development.
-          Strong foundation in mobile application design, UX fundamentals, and practical problem-solving.
-          Seeking a role where I can contribute to useful digital products, grow as a developer, and deliver clean, reliable work.
+          I combine mobile product thinking, UX foundations, and careful execution.
+          Looking for a junior app developer or digital product role in Riyadh where I can
+          ship useful interfaces, learn fast, and deliver clean, reliable work.
         </p>
       </div>
     </header>
@@ -241,31 +308,33 @@
           <div class="item">
             <div class="item-head">
               <h3>Enterprise Resource Management System Specialist</h3>
-              <div class="when">Sep 2024 - Nov 2024</div>
+              <div class="when">Sep 2024 – Nov 2024</div>
             </div>
             <div class="org">Saudi Research & Media Group (SRMG)</div>
-            <div class="sub">Riyadh, Saudi Arabia</div>
+            <div class="sub">Riyadh · On-site · Past role</div>
             <ul>
-              <li>Supported ERM system operations inside a major media organization.</li>
-              <li>Worked with structured processes, data accuracy, and cross-team coordination.</li>
-              <li>Delivered reliable day-to-day specialist work with strong attention to detail.</li>
+              <li>Supported day-to-day ERM system operations in a large media enterprise.</li>
+              <li>Worked inside structured workflows with focus on data accuracy and follow-through.</li>
+              <li>Coordinated with internal teams to keep processes clear and reliable.</li>
+              <li>Practiced professional documentation, communication, and attention to detail under real workplace pressure.</li>
             </ul>
           </div>
         </section>
 
         <section class="block">
-          <h2>Project</h2>
+          <h2>Featured project</h2>
           <div class="item">
             <div class="item-head">
               <h3>Harfah App</h3>
               <div class="when">Mobile concept</div>
             </div>
             <div class="org">Traditional craftsmanship marketplace</div>
-            <div class="sub">App concept · product thinking · UX-oriented design direction</div>
+            <div class="sub">Product concept · user journeys · UX direction</div>
             <ul>
-              <li>Mobile app concept helping artisans showcase, market, and sell handmade products.</li>
-              <li>Expands market reach for traditional crafts while preserving cultural heritage.</li>
-              <li>Centers sustainable commerce, discovery, and a practical digital storefront for makers.</li>
+              <li>Designed a mobile marketplace concept for artisans to showcase, market, and sell handmade products.</li>
+              <li>Mapped buyer and seller flows around discovery, storefront simplicity, and trust.</li>
+              <li>Framed the product around wider market access while preserving cultural craft heritage.</li>
+              <li>Emphasized clean UX, practical storefront structure, and sustainable digital commerce for local makers.</li>
             </ul>
           </div>
         </section>
@@ -275,10 +344,15 @@
           <div class="item">
             <div class="item-head">
               <h3>Diploma, Smart Device Application Development</h3>
-              <div class="when">Aug 2022 - June 2024</div>
+              <div class="when">Aug 2022 – June 2024</div>
             </div>
             <div class="org">Majmaah University · Applied College</div>
-            <div class="sub">Full-time · mobile application design, development tools, and user-centered foundations</div>
+            <div class="sub">Full-time program focused on mobile application design and smart device software foundations.</div>
+            <ul>
+              <li>Built foundations in mobile app design, user-centered thinking, and development tooling.</li>
+              <li>Practiced turning product ideas into clear screens, flows, and practical solutions.</li>
+              <li>Strengthened problem-solving, analytical work, and teamwork through applied coursework.</li>
+            </ul>
           </div>
         </section>
 
@@ -290,36 +364,62 @@
               <div class="when">Google</div>
             </div>
             <div class="sub">UX fundamentals, usability principles, and design process basics.</div>
+            <ul>
+              <li>Covered user research basics, wireframing thinking, and simple usability evaluation habits.</li>
+              <li>Applied UX principles to keep product decisions clear for both users and makers.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2>How I work</h2>
+          <div class="item">
+            <ul>
+              <li>Break problems into clear steps, communicate early, and keep interfaces simple.</li>
+              <li>Stay organized under pressure and learn new tools quickly when the work needs it.</li>
+              <li>Care about details, documentation, and delivering work others can trust.</li>
+            </ul>
           </div>
         </section>
       </div>
 
       <aside class="side">
         <section class="block">
-          <h2>Core skills</h2>
+          <h2>Product & apps</h2>
           <div class="chips">
             <span class="chip">Mobile app design</span>
             <span class="chip">Smart device apps</span>
             <span class="chip">UX foundations</span>
+            <span class="chip">User journeys</span>
             <span class="chip">Problem solving</span>
-            <span class="chip">Data analysis</span>
+            <span class="chip">Product thinking</span>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2>Tools & workplace</h2>
+          <div class="chips">
             <span class="chip">Microsoft Office</span>
+            <span class="chip">Data analysis</span>
             <span class="chip">ERM systems</span>
             <span class="chip">Documentation</span>
+            <span class="chip">Numerical skills</span>
+            <span class="chip">Process work</span>
           </div>
         </section>
 
         <section class="block">
           <h2>Strengths</h2>
           <div class="chips">
-            <span class="chip">Highly organized</span>
+            <span class="chip">Organized</span>
             <span class="chip">Communication</span>
             <span class="chip">Teamwork</span>
             <span class="chip">Attention to detail</span>
             <span class="chip">Self-motivation</span>
             <span class="chip">Critical thinking</span>
-            <span class="chip">Ethical standards</span>
             <span class="chip">Fast learner</span>
+            <span class="chip">Ethical standards</span>
+            <span class="chip">Hard-working</span>
           </div>
         </section>
 
@@ -337,18 +437,38 @@
             <div class="pill">Chess</div>
             <div class="pill">Football</div>
             <div class="pill">Digital products</div>
+            <div class="pill">UX & mobile</div>
           </div>
         </section>
 
         <section class="block">
+          <h2>Target roles</h2>
+          <div class="chips">
+            <span class="chip">Junior app developer</span>
+            <span class="chip">Mobile product</span>
+            <span class="chip">Digital experience</span>
+            <span class="chip">UX-minded product work</span>
+          </div>
+        </section>
+
+        <section class="block block-availability">
           <h2>Availability</h2>
           <p>
-            Based in Riyadh and open to junior app developer, mobile product, and digital experience roles.
-            Ready to contribute immediately and grow with a focused team.
+            Based in Riyadh. Open to junior app developer, mobile product, and digital experience roles.
+            Ready to start, contribute carefully, and grow with a focused team.
           </p>
         </section>
       </aside>
     </div>
+
+    <footer class="foot">
+      <span><strong>Open to work</strong> · Riyadh, Saudi Arabia</span>
+      <span>
+        <a href="https://abdullatifalmutairi.github.io/">abdullatifalmutairi.github.io</a>
+        ·
+        <a href="https://github.com/abdullatifalmutairi">GitHub</a>
+      </span>
+    </footer>
   </article>
 </body>
 </html>
