@@ -422,8 +422,18 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.35rem;
     }
+    .compose-tz {
+      margin: 0 0 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(238, 243, 248, 0.62);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .compose-tz i { color: #9be7b5; font-size: 0.85rem; }
     .compose-bar h3 {
       margin: 0;
       font-size: 0.95rem;
@@ -1315,12 +1325,12 @@
           <div class="hero-main">
             <p class="eyebrow">
               <span data-lang="en">Portfolio · Riyadh</span>
-              <span data-lang="ar">ملف شخصي · الرياض</span>
+              <span data-lang="ar">أعمال · الرياض</span>
             </p>
             <div class="hero-status">
               <i aria-hidden="true"></i>
-              <span data-lang="en">Open to work · Riyadh time (UTC+3)</span>
-              <span data-lang="ar">متاح للعمل · توقيت الرياض (UTC+3)</span>
+              <span data-lang="en">Open to work</span>
+              <span data-lang="ar">متاح للعمل</span>
             </div>
             <h1 data-lang="en">Abdullatif Almutairi</h1>
             <h1 data-lang="ar">عبداللطيف المطيري</h1>
@@ -1337,8 +1347,8 @@
                 </p>
                 <p class="hero-copy" data-lang="ar">
                   خريج دبلوم في تطوير تطبيقات الأجهزة الذكية.
-                  أبني منتجات موجّهة للجوال بتفكير واضح في تجربة المستخدم، وحلّ عملي للمشكلات،
-                  واهتمام دقيق بالتفاصيل.
+                  أبني تطبيقات للجوال بتفكير واضح في تجربة المستخدم، وحلول عملية،
+                  واهتمام بالتفاصيل.
                 </p>
 
                 <div class="hero-actions">
@@ -1414,6 +1424,11 @@
                     <i class="bi bi-x-lg" aria-hidden="true"></i>
                   </button>
                 </div>
+                <p class="compose-tz">
+                  <i class="bi bi-clock" aria-hidden="true"></i>
+                  <span data-lang="en">Riyadh time (UTC+3)</span>
+                  <span data-lang="ar">توقيت الرياض (UTC+3)</span>
+                </p>
                 <form id="contactForm">
                   <input type="hidden" name="access_key" value="fcbf2fdf-fcdf-486d-b3b3-4da5ca7afc54" />
                   <input type="hidden" name="from_name" value="Abdullatif Portfolio" />
@@ -1424,7 +1439,7 @@
                       <input id="cName" name="name" type="text" required autocomplete="name" />
                     </div>
                     <div class="form-field">
-                      <label for="cEmail"><span data-lang="en">Your email</span><span data-lang="ar">بريدك</span></label>
+                      <label for="cEmail"><span data-lang="en">Your email</span><span data-lang="ar">إيميلك</span></label>
                       <input id="cEmail" name="email" type="email" required autocomplete="email" />
                     </div>
                   </div>
@@ -1475,16 +1490,16 @@
         <div class="section-head">
           <p class="kicker"><span data-lang="en">About</span><span data-lang="ar">نبذة</span></p>
           <h2 data-lang="en">Profile</h2>
-          <h2 data-lang="ar">الملف</h2>
+          <h2 data-lang="ar">عنّي</h2>
           <p class="lead" data-lang="en">
             Applied College graduate from Majmaah University with a diploma focused on smart device applications.
             I combine mobile product thinking with short professional experience in enterprise systems,
             and I am looking to grow as an app developer on a product team.
           </p>
           <p class="lead" data-lang="ar">
-            خريج الكلية التطبيقية بجامعة المجمعة بدبلوم يركّز على تطبيقات الأجهزة الذكية.
-            أجمع بين تفكير منتجات الجوال وخبرة مهنية قصيرة في أنظمة المؤسسات،
-            وأسعى للنمو كمطور تطبيقات ضمن فريق منتج.
+            خريج الكلية التطبيقية بجامعة المجمعة، تخصص تطوير تطبيقات الأجهزة الذكية.
+            أجمع بين بناء تطبيقات الجوال وخبرة عملية قصيرة في أنظمة المؤسسات،
+            وأبحث عن فرصة أنمو فيها كمطور تطبيقات ضمن فريق منتج.
           </p>
         </div>
 
@@ -1505,7 +1520,7 @@
             <b data-lang="en">Featured project</b>
             <b data-lang="ar">مشروع مميز</b>
             <span data-lang="en">Harfah mobile app concept</span>
-            <span data-lang="ar">مفهوم تطبيق حِرفة للجوال</span>
+            <span data-lang="ar">تطبيق حِرفة · فكرة منتج جوال</span>
           </div>
         </div>
 
@@ -1518,8 +1533,8 @@
               I stay organized under pressure and learn new tools quickly when the work requires it.
             </p>
             <p data-lang="ar">
-              أجزّئ المشكلات إلى خطوات واضحة، وأتواصل مبكراً، وأحسّن حتى تصبح الواجهة بسيطة.
-              أبقى منظّماً تحت الضغط وأتعلّم الأدوات الجديدة بسرعة عند الحاجة.
+              أقسّم المشكلة إلى خطوات واضحة، وأتواصل مبكراً، وأحسّن الواجهة حتى تصبح بسيطة.
+              أبقى منظّماً حتى تحت الضغط، وأتعلّم الأدوات الجديدة بسرعة عند الحاجة.
             </p>
           </article>
           <article class="card">
@@ -1530,8 +1545,8 @@
               where I can contribute carefully and keep growing with a focused team.
             </p>
             <p data-lang="ar">
-              أدوار مطوّر تطبيقات مبتدئ، أو منتجات جوال، أو تجربة رقمية في الرياض،
-              حيث أساهم بعناية وأنمو مع فريق مركّز.
+              فرصة مطوّر تطبيقات (مبتدئ)، أو عمل على تطبيقات جوال أو تجربة رقمية في الرياض،
+              أساهم فيها بجدية وأنمو مع فريق واضح الهدف.
             </p>
           </article>
         </div>
@@ -1543,12 +1558,12 @@
         <div class="section-head">
           <p class="kicker"><span data-lang="en">Experience</span><span data-lang="ar">الخبرات</span></p>
           <h2 data-lang="en">Employment history</h2>
-          <h2 data-lang="ar">سجل العمل</h2>
+          <h2 data-lang="ar">الخبرة العملية</h2>
           <p class="lead" data-lang="en">
             Previous professional experience. Not a current role.
           </p>
           <p class="lead" data-lang="ar">
-            خبرة مهنية سابقة. ليست وظيفة حالية.
+            خبرة سابقة، وليست وظيفة حالية.
           </p>
         </div>
 
@@ -1564,16 +1579,16 @@
             <h3 data-lang="en">Saudi Research & Media Group</h3>
             <h3 data-lang="ar">المجموعة السعودية للأبحاث والإعلام</h3>
             <p class="title" data-lang="en">Enterprise Resource Management System Specialist</p>
-            <p class="title" data-lang="ar">أخصائي أنظمة إدارة موارد المؤسسات</p>
+            <p class="title" data-lang="ar">أخصائي أنظمة إدارة الموارد</p>
             <ul data-lang="en">
               <li>Supported ERM system operations in a large media enterprise environment.</li>
               <li>Worked with structured processes, data accuracy, and cross-team coordination.</li>
               <li>Practiced reliability, documentation, and clear workplace communication.</li>
             </ul>
             <ul data-lang="ar">
-              <li>دعمت تشغيل أنظمة إدارة الموارد في بيئة مؤسسة إعلامية كبيرة.</li>
-              <li>عملت ضمن إجراءات منظمة مع دقة البيانات والتنسيق بين الفرق.</li>
-              <li>مارست الموثوقية والتوثيق والتواصل المهني الواضح.</li>
+              <li>دعمت تشغيل أنظمة إدارة الموارد في مؤسسة إعلامية كبيرة.</li>
+              <li>عملت ضمن إجراءات واضحة، مع دقة في البيانات وتنسيق بين الفرق.</li>
+              <li>حرصت على الالتزام، والتوثيق، والتواصل المهني الواضح.</li>
             </ul>
           </div>
         </article>
@@ -1590,7 +1605,7 @@
             A mobile product concept that puts traditional artisans on a modern digital marketplace.
           </p>
           <p class="lead" data-lang="ar">
-            مفهوم لمنتج جوال يضع الحرفيين التقليديين في سوق رقمي عصري.
+            فكرة تطبيق جوال يوصل الحرفيين التقليديين بسوق رقمي حديث.
           </p>
         </div>
 
@@ -1598,7 +1613,7 @@
           <div class="project-main">
             <p class="kicker">
               <span data-lang="en">Featured concept</span>
-              <span data-lang="ar">مفهوم مميز</span>
+              <span data-lang="ar">فكرة مميزة</span>
             </p>
             <h3 data-lang="en">Harfah App</h3>
             <h3 data-lang="ar">تطبيق حِرفة</h3>
@@ -1608,21 +1623,21 @@
               expanding reach while protecting cultural heritage.
             </p>
             <p data-lang="ar">
-              «حِرفة» تطبيق جوال صُمم لدعم الحرف اليدوية التقليدية والترويج لها.
-              يمنح الحرفيين منصة رقمية لعرض منتجاتهم وتسويقها وبيعها،
-              فيوسّع الوصول ويحفظ التراث الثقافي.
+              «حِرفة» تطبيق جوال لدعم الحرف اليدوية التقليدية والترويج لها.
+              يوفّر للحرفي منصة رقمية يعرض فيها منتجاته ويُسوّقها ويبيعها،
+              فيوسّع وصوله ويحافظ على التراث.
             </p>
             <p data-lang="en">
               The concept connects craftsmen with a broader audience, encourages sustainable business
               practices, and helps local makers grow in the digital marketplace.
             </p>
             <p data-lang="ar">
-              الفكرة تربط الحرفيين بجمهور أوسع، وتشجّع ممارسات تجارية مستدامة،
+              الفكرة تربط الحرفي بجمهور أوسع، وتشجّع عملاً مستداماً،
               وتساعد الصنّاع المحليين على النمو في السوق الرقمي.
             </p>
             <div class="tags">
               <span class="tag" data-lang="en">Mobile product</span>
-              <span class="tag" data-lang="ar">منتج جوال</span>
+              <span class="tag" data-lang="ar">تطبيق جوال</span>
               <span class="tag" data-lang="en">Marketplace</span>
               <span class="tag" data-lang="ar">سوق رقمي</span>
               <span class="tag" data-lang="en">UX thinking</span>
@@ -1633,7 +1648,7 @@
           </div>
           <aside class="project-side">
             <h4 data-lang="en">Problem focus</h4>
-            <h4 data-lang="ar">محاور المشكلة</h4>
+            <h4 data-lang="ar">أبرز التحديات</h4>
             <ul data-lang="en">
               <li>Limited market access for traditional artisans</li>
               <li>Fragmented discovery of handmade products</li>
@@ -1641,10 +1656,10 @@
               <li>Preserving craft heritage with modern tools</li>
             </ul>
             <ul data-lang="ar">
-              <li>محدودية وصول الحرفيين التقليديين للسوق</li>
-              <li>تشتت اكتشاف المنتجات اليدوية</li>
-              <li>الحاجة لمتاجر رقمية بسيطة</li>
-              <li>حفظ تراث الحرفة بأدوات حديثة</li>
+              <li>صعوبة وصول الحرفي التقليدي للسوق</li>
+              <li>صعوبة اكتشاف المنتجات اليدوية على الإنترنت</li>
+              <li>الحاجة لمتجر رقمي بسيط</li>
+              <li>حفظ تراث الحرفة بأدوات عصرية</li>
             </ul>
           </aside>
         </div>
@@ -1658,7 +1673,7 @@
               Many skilled artisans struggle to reach buyers beyond local circles, and handmade products are hard to discover online.
             </p>
             <p data-lang="ar">
-              كثير من الحرفيين المهرة يصعب عليهم الوصول لمشترين خارج الدائرة المحلية، والمنتجات اليدوية صعبة الاكتشاف أونلاين.
+              كثير من الحرفيين المهرة يصعب عليهم الوصول لمشترين خارج دائرتهم المحلية، والمنتجات اليدوية يصعب إيجادها على الإنترنت.
             </p>
           </article>
           <article class="case-step">
@@ -1669,18 +1684,18 @@
               A mobile marketplace where makers list products, tell the craft story, and sell with a simple storefront experience.
             </p>
             <p data-lang="ar">
-              سوق جوال يعرض فيه الصانع منتجاته، ويحكي قصة الحرفة، ويبيع عبر متجر رقمي بسيط.
+              تطبيق سوق يعرض فيه الصانع منتجاته، ويحكي قصة الحرفة، ويبيع عبر متجر رقمي بسيط.
             </p>
           </article>
           <article class="case-step">
             <span class="n">3</span>
             <h3 data-lang="en">My focus</h3>
-            <h3 data-lang="ar">تركيزي</h3>
+            <h3 data-lang="ar">ما ركزت عليه</h3>
             <p data-lang="en">
               Product concept, user journeys for buyers and sellers, and UX direction that keeps the experience clear and cultural.
             </p>
             <p data-lang="ar">
-              مفهوم المنتج، ورحلات المستخدم للمشتري والبائع، وتوجيه تجربة مستخدم واضح ويحترم الطابع الثقافي.
+              فكرة المنتج، ومسار المشتري والبائع، وتجربة مستخدم واضحة وتحترم الطابع الثقافي.
             </p>
           </article>
         </div>
@@ -1692,19 +1707,19 @@
         <div class="section-head">
           <p class="kicker"><span data-lang="en">Skills</span><span data-lang="ar">المهارات</span></p>
           <h2 data-lang="en">Capabilities</h2>
-          <h2 data-lang="ar">القدرات</h2>
+          <h2 data-lang="ar">مهاراتي</h2>
           <p class="lead" data-lang="en">
             A practical mix of app-oriented skills, workplace tools, and professional habits.
           </p>
           <p class="lead" data-lang="ar">
-            مزيج عملي من مهارات التطبيقات، وأدوات العمل، والعادات المهنية.
+            مزيج عملي: تطبيقات، أدوات عمل، ومهارات شخصية.
           </p>
         </div>
 
         <div class="grid-3">
           <article class="card">
             <h3 data-lang="en">Product & apps</h3>
-            <h3 data-lang="ar">المنتج والتطبيقات</h3>
+            <h3 data-lang="ar">التطبيقات والمنتج</h3>
             <div class="chips" style="margin-top: 0.75rem;">
               <span class="chip" data-lang="en">Mobile app design</span>
               <span class="chip" data-lang="ar">تصميم تطبيقات الجوال</span>
@@ -1713,7 +1728,7 @@
               <span class="chip" data-lang="en">UX foundations</span>
               <span class="chip" data-lang="ar">أساسيات تجربة المستخدم</span>
               <span class="chip" data-lang="en">User journeys</span>
-              <span class="chip" data-lang="ar">رحلات المستخدم</span>
+              <span class="chip" data-lang="ar">مسارات الاستخدام</span>
               <span class="chip" data-lang="en">Problem solving</span>
               <span class="chip" data-lang="ar">حل المشكلات</span>
             </div>
@@ -1730,12 +1745,12 @@
               <span class="chip" data-lang="en">Documentation</span>
               <span class="chip" data-lang="ar">التوثيق</span>
               <span class="chip" data-lang="en">Numerical skills</span>
-              <span class="chip" data-lang="ar">مهارات رقمية</span>
+              <span class="chip" data-lang="ar">التعامل مع الأرقام</span>
             </div>
           </article>
           <article class="card">
             <h3 data-lang="en">Professional habits</h3>
-            <h3 data-lang="ar">عادات مهنية</h3>
+            <h3 data-lang="ar">مهارات شخصية</h3>
             <div class="chips" style="margin-top: 0.75rem;">
               <span class="chip" data-lang="en">Organization</span>
               <span class="chip" data-lang="ar">التنظيم</span>
@@ -1746,9 +1761,9 @@
               <span class="chip" data-lang="en">Attention to detail</span>
               <span class="chip" data-lang="ar">الاهتمام بالتفاصيل</span>
               <span class="chip" data-lang="en">Self-motivation</span>
-              <span class="chip" data-lang="ar">الدافعية الذاتية</span>
+              <span class="chip" data-lang="ar">المبادرة</span>
               <span class="chip" data-lang="en">Critical thinking</span>
-              <span class="chip" data-lang="ar">تفكير نقدي</span>
+              <span class="chip" data-lang="ar">تفكير ناقد</span>
             </div>
           </article>
         </div>
@@ -1775,8 +1790,8 @@
               for modern smart devices, with foundations in user-centered product thinking.
             </p>
             <p data-lang="ar">
-              برنامج بدوام كامل، أغسطس 2022 - يونيو 2024. يركّز على تصميم وتطوير تطبيقات
-              الأجهزة الذكية الحديثة، مع أسس في التفكير المنتج المرتكز على المستخدم.
+              دراسة بدوام كامل، أغسطس 2022 - يونيو 2024. تركّز على تصميم وتطوير تطبيقات
+              الأجهزة الذكية، مع أسس في التفكير من منظور المستخدم.
             </p>
           </article>
           <div class="side-stack">
@@ -1785,14 +1800,14 @@
               <h3 data-lang="en">User Experience Design Foundations</h3>
               <h3 data-lang="ar">أساسيات تصميم تجربة المستخدم</h3>
               <p data-lang="en">Google · Professional development in UX fundamentals.</p>
-              <p data-lang="ar">Google · تطوير مهني في أساسيات تجربة المستخدم.</p>
+              <p data-lang="ar">Google · دورة في أساسيات تجربة المستخدم.</p>
             </article>
             <article class="side-card">
               <p class="label"><span data-lang="en">Languages</span><span data-lang="ar">اللغات</span></p>
               <h3 data-lang="en">Arabic · English</h3>
               <h3 data-lang="ar">العربية · الإنجليزية</h3>
               <p data-lang="en">Fluent Arabic. Professional working English for collaboration and documentation.</p>
-              <p data-lang="ar">العربية بطلاقة. الإنجليزية بمستوى مهني للتعاون والتوثيق.</p>
+              <p data-lang="ar">العربية بطلاقة. الإنجليزية بمستوى مهني للعمل والتوثيق.</p>
             </article>
           </div>
         </div>
@@ -1804,12 +1819,12 @@
         <div class="section-head">
           <p class="kicker"><span data-lang="en">Contact</span><span data-lang="ar">تواصل</span></p>
           <h2 data-lang="en">Let’s talk</h2>
-          <h2 data-lang="ar">خلّنا نتكلم</h2>
+          <h2 data-lang="ar">تواصل معي</h2>
           <p class="lead" data-lang="en">
             Prefer WhatsApp or a quick message from the top of the page. CV is one tap away.
           </p>
           <p class="lead" data-lang="ar">
-            تقدر تتواصل واتساب أو ترسل رسالة من أعلى الصفحة. وتحميل السيرة دائماً بضغطة.
+            واتساب أو رسالة من أعلى الصفحة. والسيرة جاهزة للتحميل بضغطة.
           </p>
         </div>
 
@@ -2047,7 +2062,7 @@
           }
 
           if (btn) btn.disabled = true;
-          setNote(ar ? "جاري الإرسال..." : "Sending...", null);
+          setNote(ar ? "جارٍ الإرسال..." : "Sending...", null);
 
           var payload = {
             access_key: "fcbf2fdf-fcdf-486d-b3b3-4da5ca7afc54",
@@ -2072,11 +2087,11 @@
                 contactForm.reset();
                 setNote(ar ? "تم الإرسال ✓" : "Sent ✓", "ok");
               } else {
-                setNote(ar ? "تعذر الإرسال. جرّب واتساب." : "Could not send. Try WhatsApp.", "err");
+                setNote(ar ? "تعذّر الإرسال. جرّب واتساب." : "Could not send. Try WhatsApp.", "err");
               }
             })
             .catch(function () {
-              setNote(ar ? "خطأ شبكة. جرّب واتساب." : "Network error. Try WhatsApp.", "err");
+              setNote(ar ? "مشكلة في الشبكة. جرّب واتساب." : "Network error. Try WhatsApp.", "err");
             })
             .finally(function () {
               if (btn) btn.disabled = false;
