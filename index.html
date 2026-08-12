@@ -251,19 +251,19 @@
         var(--sec-paper);
       border-bottom: 0;
     }
+    /* Clean desktop hero: packed text + photo, no empty navy voids */
     .hero-panel {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 32%);
-      gap: 0.85rem 1.1rem;
-      align-items: stretch;
-      min-height: 0;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 1.15rem 1.35rem;
+      align-items: start;
       background:
         radial-gradient(circle at 100% 0%, rgba(31, 111, 120, 0.14), transparent 42%),
         radial-gradient(circle at 0% 100%, rgba(184, 137, 61, 0.12), transparent 40%),
         linear-gradient(160deg, #16304a 0%, #122033 48%, #1a3d42 100%);
       color: #eef3f8;
       border-radius: 22px;
-      padding: 1.2rem 1.25rem 1.05rem 1.5rem;
+      padding: 1.35rem 1.4rem 1.35rem 1.6rem;
       box-shadow: 0 22px 50px rgba(12, 24, 40, 0.28);
       border: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
@@ -271,25 +271,21 @@
     }
     .hero-content {
       min-width: 0;
-      min-height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      gap: 0.45rem;
-      padding: 0;
+      gap: 0.7rem;
     }
     .hero-intro {
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
     .hero-pills {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 0.4rem;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.5rem;
     }
     .hero-pills .eyebrow,
     .hero-pills .hero-status {
@@ -299,57 +295,33 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      flex: 1 1 auto;
-      gap: 0;
-      margin-top: 0;
     }
     .hero-about {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      align-items: flex-start;
+      gap: 0.65rem;
     }
     .hero-about .hero-copy {
-      margin-bottom: 0.65rem;
-    }
-    .hero-about .hero-actions-cv {
       margin-bottom: 0;
     }
+    .hero-cv-btn {
+      align-self: flex-start;
+    }
+    /* Contact sits right under bio with only a small gap */
     .hero-contact-block {
-      margin-top: auto;
-      padding-top: 0.85rem; /* small gap under definition only */
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.55rem;
     }
-    .hero-contact-block .hero-actions-contact {
-      margin-bottom: 0;
-    }
-    .hero-contact-block .hero-chips {
-      margin-bottom: 0;
-    }
-    .hero-bottom {
-      margin-top: 0.15rem;
-      margin-bottom: 0;
-      padding: 0.45rem 0 0;
+    .hero-actions-contact {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 0.35rem 0.65rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: rgba(238, 243, 248, 0.55);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .hero-bottom strong {
-      color: #f0d7a0;
-      font-weight: 700;
-    }
-    .hero-bottom span {
-      color: rgba(238, 243, 248, 0.48);
-      font-weight: 500;
-    }
-    .hero-panel.is-composing .hero-bottom {
-      display: none;
+      gap: 0.45rem;
+      margin: 0;
     }
     .hero-panel::before {
       content: "";
@@ -397,41 +369,35 @@
       font-size: 1rem;
       font-weight: 500;
       color: #9fd0d4;
-      margin-bottom: 0.55rem;
+      margin-bottom: 0;
     }
     .hero-copy {
       color: rgba(238, 243, 248, 0.78);
       font-size: 0.95rem;
-      max-width: none; /* use full text column width toward the photo */
-      margin-bottom: 0.7rem;
+      max-width: 42ch;
+      margin-bottom: 0;
       line-height: 1.5;
     }
-    html[lang="ar"] .hero-copy { max-width: none; }
+    html[lang="ar"] .hero-copy { max-width: 46ch; }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.45rem;
-      margin-bottom: 0.55rem;
+      margin-bottom: 0;
     }
     /* Stage swap: richer open/close animation for راسلني */
     .hero-stage {
       position: relative;
       min-height: 0;
       overflow: hidden;
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
     }
     .hero-stage-default {
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 auto;
-      min-height: 0;
+      display: block;
       opacity: 1;
       transform: translateY(0) scale(1);
       filter: blur(0);
-      max-height: 720px;
+      max-height: 900px;
       overflow: hidden;
       transform-origin: 50% 0%;
       transition:
@@ -462,7 +428,6 @@
       transform: translateY(-18px) scale(0.96);
       filter: blur(3px);
       max-height: 0;
-      flex: 0 0 auto;
       pointer-events: none;
       visibility: hidden;
       transition:
@@ -551,12 +516,17 @@
     .hero-panel.is-composing .portrait-meta strong { font-size: 0.78rem; }
     .hero-panel.is-composing .portrait-meta span { font-size: 0.7rem; }
     .hero-panel.is-composing {
-      grid-template-columns: minmax(0, 1fr) minmax(200px, 30%);
+      grid-template-columns: minmax(0, 1fr) 220px;
       padding: 1.15rem 1.2rem 1.15rem 1.4rem;
     }
     .hero-panel.is-composing .hero-content {
-      gap: 0.55rem;
-      padding: 0;
+      gap: 0.5rem;
+    }
+    .hero-panel.is-composing .portrait-wrap {
+      width: 220px;
+    }
+    .hero-panel.is-composing .portrait-card img {
+      height: 220px;
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-stage-default,
@@ -779,19 +749,14 @@
     .hero-stage-compose .form-note.err { color: #f0b4b4; }
     .hero-stage-compose .btn { min-height: 40px; padding: 0.5rem 0.95rem; }
 
-    /* Desktop portrait: matches full text-column height so bottoms align */
+    /* Desktop portrait: rounded inset card, natural height */
     .portrait-wrap {
-      width: 100%;
-      max-width: 280px;
-      min-width: 0;
-      min-height: 0;
-      height: 100%;
+      width: 250px;
+      max-width: 100%;
       justify-self: end;
-      align-self: stretch;
+      align-self: start;
     }
     .portrait-card {
-      height: 100%;
-      min-height: 100%;
       display: flex;
       flex-direction: column;
       background: rgba(255,255,255,0.06);
@@ -812,17 +777,14 @@
     }
     .portrait-card img {
       width: 100%;
-      flex: 1 1 auto;
-      height: 100%;
-      min-height: 0;
+      height: 280px;
       object-fit: cover;
       object-position: center 12%;
       background: #24384f;
       display: block;
     }
     .portrait-meta {
-      flex-shrink: 0;
-      padding: 0.6rem 0.7rem 0.7rem;
+      padding: 0.65rem 0.75rem 0.75rem;
       border-top: 1px solid rgba(255,255,255,0.1);
       text-align: center;
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.12));
@@ -1602,72 +1564,54 @@
         grid-template-columns: 1fr;
       }
       .grid-3 { grid-template-columns: 1fr; }
-      /* Mobile: photo + name on top row, body under */
+      /* Mobile: photo + name on top row, body under — still packed */
       .hero-panel {
         display: grid;
-        grid-template-columns: 132px minmax(0, 1fr);
+        grid-template-columns: 120px minmax(0, 1fr);
         grid-template-areas:
           "photo intro"
           "body body";
-        gap: 0.9rem 1rem;
-        min-height: 0;
-        padding: 1.15rem 1.1rem 1.25rem;
+        gap: 0.75rem 0.85rem;
+        padding: 1.1rem 1rem 1.15rem;
         border-radius: 20px;
-      }
-      .hero-panel.is-composing {
-        padding: 1.1rem 1.05rem 1.15rem;
       }
       .hero-content {
         display: contents;
       }
       .portrait-wrap {
         grid-area: photo;
-        width: 132px;
-        height: auto;
+        width: 120px;
         justify-self: start;
-        align-self: center;
+        align-self: start;
       }
       .hero-intro {
         grid-area: intro;
         justify-content: center;
-        align-items: center;
-        text-align: center;
-        gap: 0.35rem;
+        align-items: flex-start;
+        text-align: start;
         min-width: 0;
-        padding: 0;
       }
       .hero-body {
         grid-area: body;
-        margin-top: 0;
-        padding: 0.85rem 0 0;
+        padding: 0.7rem 0 0;
         border-top: 1px solid rgba(255,255,255,0.08);
+      }
+      .hero-contact-block {
+        margin-top: 0.7rem;
+        padding-top: 0.7rem;
       }
       .portrait-meta { display: none; }
       .portrait-card {
-        height: auto;
-        min-height: 0;
-        border-radius: 18px;
-        border: 1px solid rgba(255,255,255,0.12);
-        border-inline-start: 1px solid rgba(255,255,255,0.12);
-        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+        border-radius: 16px;
       }
       .portrait-card img {
-        flex: none;
-        height: 158px;
-        min-height: 0;
-        object-position: center 12%;
+        height: 148px;
       }
       .hero-panel.is-composing {
-        grid-template-columns: 120px minmax(0, 1fr);
+        grid-template-columns: 110px minmax(0, 1fr);
       }
-      .hero-panel.is-composing .portrait-card img { height: 140px; }
-      .hero-panel.is-composing .hero-content {
-        display: contents;
-        padding: 0;
-      }
-      .hero-bottom {
-        display: none;
-      }
+      .hero-panel.is-composing .portrait-wrap { width: 110px; }
+      .hero-panel.is-composing .portrait-card img { height: 130px; }
       /* Pills side-by-side, centered */
       .hero-intro .eyebrow,
       .hero-intro .hero-status {
@@ -1793,9 +1737,9 @@
   <main id="top">
     <section class="hero">
       <div class="wrap">
-        <div class="hero-panel" id="heroPanel">
-                    <div class="hero-content">
-<div class="hero-intro">
+                <div class="hero-panel" id="heroPanel">
+          <div class="hero-content">
+            <div class="hero-intro">
               <div class="hero-pills">
                 <p class="eyebrow">
                   <span data-lang="en">Portfolio · Riyadh</span>
@@ -1814,170 +1758,162 @@
                 <span data-lang="ar">مطوّر تطبيقات</span>
               </p>
             </div>
-<div class="hero-body">
-            <div class="hero-stage" id="heroStage">
-              <div class="hero-stage-default" id="heroDefault">
-                <div class="hero-about">
-                <p class="hero-copy" data-lang="en">
-                  Diploma graduate in Smart Device Application Development.
-                  I build mobile-minded products with clear UX thinking, practical problem-solving,
-                  and careful attention to detail.
-                </p>
-                <p class="hero-copy" data-lang="ar">
-                  خريج دبلوم في تطوير تطبيقات الأجهزة الذكية.
-                  أبني تطبيقات للجوال بتفكير واضح في تجربة المستخدم، وحلول عملية،
-                  واهتمام بالتفاصيل.
-                </p>
-                <div class="hero-actions hero-actions-cv">
-                  <a class="btn btn-primary" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
-                    <i class="bi bi-download" aria-hidden="true"></i>
-                    <span data-lang="en">Download CV</span>
-                    <span data-lang="ar">تحميل السيرة</span>
-                  </a>
-                </div>
-                </div>
 
-                <div class="hero-contact-block">
-                <div class="hero-actions hero-actions-contact">
-                  <button class="btn btn-msg" type="button" id="composeOpenBtn" aria-expanded="false" aria-controls="heroCompose">
-                    <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
-                    <span data-lang="en">Message</span>
-                    <span data-lang="ar">راسلني</span>
-                  </button>
-                  <a
-                    class="btn btn-wa-hero"
-                    href="https://wa.me/966500066172?text=Hi%20Abdullatif%2C%20I%20saw%20your%20portfolio."
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <i class="bi bi-whatsapp" aria-hidden="true"></i>
-                    <span data-lang="en">WhatsApp</span>
-                    <span data-lang="ar">واتساب</span>
-                  </a>
-                  <a class="btn btn-call" href="tel:+966500066172">
-                    <i class="bi bi-telephone-fill" aria-hidden="true"></i>
-                    <span data-lang="en">Call</span>
-                    <span data-lang="ar">اتصل</span>
-                    <span dir="ltr" class="btn-phone-num">+966 50 006 6172</span>
-                  </a>
-                </div>
+            <div class="hero-body">
+              <div class="hero-stage" id="heroStage">
+                <div class="hero-stage-default" id="heroDefault">
+                  <div class="hero-about">
+                    <p class="hero-copy" data-lang="en">
+                      Diploma graduate in Smart Device Application Development.
+                      I build mobile-minded products with clear UX thinking, practical problem-solving,
+                      and careful attention to detail.
+                    </p>
+                    <p class="hero-copy" data-lang="ar">
+                      خريج دبلوم في تطوير تطبيقات الأجهزة الذكية.
+                      أبني تطبيقات للجوال بتفكير واضح في تجربة المستخدم، وحلول عملية،
+                      واهتمام بالتفاصيل.
+                    </p>
+                    <a class="btn btn-primary hero-cv-btn" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
+                      <i class="bi bi-download" aria-hidden="true"></i>
+                      <span data-lang="en">Download CV</span>
+                      <span data-lang="ar">تحميل السيرة</span>
+                    </a>
+                  </div>
 
-                <div class="hero-chips">
-                  <span class="hero-chip">
-                    <i class="bi bi-envelope" aria-hidden="true"></i>
-                    <a href="mailto:abdullatif.almutairi@outlook.com" dir="ltr">abdullatif.almutairi@outlook.com</a>
-                    <button type="button" class="copy-btn" data-copy="abdullatif.almutairi@outlook.com" aria-label="Copy email" title="Copy">
-                      <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                        <rect x="9" y="9" width="11" height="11" rx="2"/>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                      </svg>
-                      <svg class="icon-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
-                        <path d="M20 6 9 17l-5-5"/>
-                      </svg>
-                    </button>
-                  </span>
-                  <span class="hero-chip">
-                    <i class="bi bi-telephone" aria-hidden="true"></i>
-                    <a href="tel:+966500066172" dir="ltr">+966 50 006 6172</a>
-                    <button type="button" class="copy-btn" data-copy="+966500066172" aria-label="Copy phone" title="Copy">
-                      <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                        <rect x="9" y="9" width="11" height="11" rx="2"/>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2 2v1"/>
-                      </svg>
-                      <svg class="icon-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
-                        <path d="M20 6 9 17l-5-5"/>
-                      </svg>
-                    </button>
-                  </span>
-                  <span class="hero-chip">
-                    <i class="bi bi-geo-alt" aria-hidden="true"></i>
-                    <span data-lang="en">Riyadh</span>
-                    <span data-lang="ar">الرياض</span>
-                  </span>
-                  <span class="hero-chip">
-                    <i class="bi bi-github" aria-hidden="true"></i>
-                    <a href="https://github.com/abdullatifalmutairi" target="_blank" rel="noopener">@abdullatifalmutairi</a>
-                  </span>
-                </div>
-                <div class="hero-bottom">
-              <strong data-lang="en">Open to junior roles</strong>
-              <strong data-lang="ar">متاح لفرص المبتدئين</strong>
-              <span data-lang="en">· Mobile · Product · Riyadh</span>
-              <span data-lang="ar">· تطبيقات · منتج · الرياض</span>
-            </div>
-                </div>
-              </div>
-
-              <div class="hero-stage-compose" id="heroCompose" aria-hidden="true">
-                <div class="compose-bar">
-                  <h3>
-                    <i class="bi bi-chat-dots" aria-hidden="true"></i>
-                    <span data-lang="en">Message me</span>
-                    <span data-lang="ar">راسلني</span>
-                  </h3>
-                  <button class="compose-close" type="button" id="composeCloseBtn" aria-label="Close">
-                    <i class="bi bi-x-lg" aria-hidden="true"></i>
-                  </button>
-                </div>
-                <p class="compose-tz">
-                  <i class="bi bi-clock" aria-hidden="true"></i>
-                  <span data-lang="en">Riyadh time (UTC+3)</span>
-                  <span data-lang="ar">توقيت الرياض (UTC+3)</span>
-                </p>
-                <form id="contactForm">
-                  <input type="hidden" name="access_key" value="fcbf2fdf-fcdf-486d-b3b3-4da5ca7afc54" />
-                  <input type="hidden" name="from_name" value="Abdullatif Portfolio" />
-                  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
-                  <div class="form-row">
-                    <div class="form-field">
-                      <label for="cName"><span data-lang="en">Name</span><span data-lang="ar">الاسم</span></label>
-                      <input id="cName" name="name" type="text" required autocomplete="name" />
+                  <div class="hero-contact-block">
+                    <div class="hero-actions hero-actions-contact">
+                      <button class="btn btn-msg" type="button" id="composeOpenBtn" aria-expanded="false" aria-controls="heroCompose">
+                        <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+                        <span data-lang="en">Message</span>
+                        <span data-lang="ar">راسلني</span>
+                      </button>
+                      <a
+                        class="btn btn-wa-hero"
+                        href="https://wa.me/966500066172?text=Hi%20Abdullatif%2C%20I%20saw%20your%20portfolio."
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                        <span data-lang="en">WhatsApp</span>
+                        <span data-lang="ar">واتساب</span>
+                      </a>
+                      <a class="btn btn-call" href="tel:+966500066172">
+                        <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                        <span data-lang="en">Call</span>
+                        <span data-lang="ar">اتصل</span>
+                        <span dir="ltr" class="btn-phone-num">+966 50 006 6172</span>
+                      </a>
                     </div>
-                    <div class="form-field">
-                      <label for="cEmail"><span data-lang="en">Your email</span><span data-lang="ar">إيميلك</span></label>
-                      <input id="cEmail" name="email" type="email" required autocomplete="email" />
+                    <div class="hero-chips">
+                      <span class="hero-chip">
+                        <i class="bi bi-envelope" aria-hidden="true"></i>
+                        <a href="mailto:abdullatif.almutairi@outlook.com" dir="ltr">abdullatif.almutairi@outlook.com</a>
+                        <button type="button" class="copy-btn" data-copy="abdullatif.almutairi@outlook.com" aria-label="Copy email" title="Copy">
+                          <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                            <rect x="9" y="9" width="11" height="11" rx="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                          </svg>
+                          <svg class="icon-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+                            <path d="M20 6 9 17l-5-5"/>
+                          </svg>
+                        </button>
+                      </span>
+                      <span class="hero-chip">
+                        <i class="bi bi-telephone" aria-hidden="true"></i>
+                        <a href="tel:+966500066172" dir="ltr">+966 50 006 6172</a>
+                        <button type="button" class="copy-btn" data-copy="+966500066172" aria-label="Copy phone" title="Copy">
+                          <svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                            <rect x="9" y="9" width="11" height="11" rx="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2 2v1"/>
+                          </svg>
+                          <svg class="icon-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+                            <path d="M20 6 9 17l-5-5"/>
+                          </svg>
+                        </button>
+                      </span>
+                      <span class="hero-chip">
+                        <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                        <span data-lang="en">Riyadh</span>
+                        <span data-lang="ar">الرياض</span>
+                      </span>
+                      <span class="hero-chip">
+                        <i class="bi bi-github" aria-hidden="true"></i>
+                        <a href="https://github.com/abdullatifalmutairi" target="_blank" rel="noopener">@abdullatifalmutairi</a>
+                      </span>
                     </div>
                   </div>
-                  <div class="form-field" style="margin-bottom: 0.7rem;">
-                    <label for="cMsg"><span data-lang="en">Message</span><span data-lang="ar">الرسالة</span></label>
-                    <textarea id="cMsg" name="message" required></textarea>
-                  </div>
-                  <div class="form-actions">
-                    <button class="btn btn-primary" type="submit" id="formSubmitBtn">
-                      <i class="bi bi-send-fill" aria-hidden="true"></i>
-                      <span data-lang="en">Send</span>
-                      <span data-lang="ar">إرسال</span>
+                </div>
+
+                <div class="hero-stage-compose" id="heroCompose" aria-hidden="true">
+                  <div class="compose-bar">
+                    <h3>
+                      <i class="bi bi-chat-dots" aria-hidden="true"></i>
+                      <span data-lang="en">Message me</span>
+                      <span data-lang="ar">راسلني</span>
+                    </h3>
+                    <button class="compose-close" type="button" id="composeCloseBtn" aria-label="Close">
+                      <i class="bi bi-x-lg" aria-hidden="true"></i>
                     </button>
-                    <button class="btn btn-ghost" type="button" id="composeCancelBtn">
-                      <span data-lang="en">Cancel</span>
-                      <span data-lang="ar">إلغاء</span>
-                    </button>
-                    <span class="form-note" id="formNote" aria-live="polite"></span>
                   </div>
-                </form>
+                  <p class="compose-tz">
+                    <i class="bi bi-clock" aria-hidden="true"></i>
+                    <span data-lang="en">Riyadh time (UTC+3)</span>
+                    <span data-lang="ar">توقيت الرياض (UTC+3)</span>
+                  </p>
+                  <form id="contactForm">
+                    <input type="hidden" name="access_key" value="fcbf2fdf-fcdf-486d-b3b3-4da5ca7afc54" />
+                    <input type="hidden" name="from_name" value="Abdullatif Portfolio" />
+                    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+                    <div class="form-row">
+                      <div class="form-field">
+                        <label for="cName"><span data-lang="en">Name</span><span data-lang="ar">الاسم</span></label>
+                        <input id="cName" name="name" type="text" required autocomplete="name" />
+                      </div>
+                      <div class="form-field">
+                        <label for="cEmail"><span data-lang="en">Your email</span><span data-lang="ar">إيميلك</span></label>
+                        <input id="cEmail" name="email" type="email" required autocomplete="email" />
+                      </div>
+                    </div>
+                    <div class="form-field" style="margin-bottom: 0.7rem;">
+                      <label for="cMsg"><span data-lang="en">Message</span><span data-lang="ar">الرسالة</span></label>
+                      <textarea id="cMsg" name="message" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                      <button class="btn btn-primary" type="submit" id="formSubmitBtn">
+                        <i class="bi bi-send-fill" aria-hidden="true"></i>
+                        <span data-lang="en">Send</span>
+                        <span data-lang="ar">إرسال</span>
+                      </button>
+                      <button class="btn btn-ghost" type="button" id="composeCancelBtn">
+                        <span data-lang="en">Cancel</span>
+                        <span data-lang="ar">إلغاء</span>
+                      </button>
+                      <span class="form-note" id="formNote" aria-live="polite"></span>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-</div>
-<div class="portrait-wrap">
-              <figure class="portrait-card">
-                <img
-                  src="assets/portrait.jpg"
-                  width="176"
-                  height="200"
-                  alt="Portrait of Abdullatif Almutairi"
-                  data-alt-en="Portrait of Abdullatif Almutairi"
-                  data-alt-ar="صورة عبداللطيف المطيري"
-                />
-                <figcaption class="portrait-meta">
-                  <strong data-lang="en">Open to work</strong>
-                  <strong data-lang="ar">متاح للعمل</strong>
-                  <span data-lang="en">App Developer · Riyadh</span>
-                  <span data-lang="ar">مطوّر تطبيقات · الرياض</span>
-                </figcaption>
-              </figure>
-            </div>
 
+          <div class="portrait-wrap">
+            <figure class="portrait-card">
+              <img
+                src="assets/portrait.jpg"
+                width="240"
+                height="300"
+                alt="Portrait of Abdullatif Almutairi"
+                data-alt-en="Portrait of Abdullatif Almutairi"
+                data-alt-ar="صورة عبداللطيف المطيري"
+              />
+              <figcaption class="portrait-meta">
+                <strong data-lang="en">Open to work</strong>
+                <strong data-lang="ar">متاح للعمل</strong>
+                <span data-lang="en">App Developer · Riyadh</span>
+                <span data-lang="ar">مطوّر تطبيقات · الرياض</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
