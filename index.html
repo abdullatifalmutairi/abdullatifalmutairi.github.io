@@ -290,21 +290,20 @@
     /* Stage swaps actions/chips with the message form in the same slot */
     .hero-stage {
       position: relative;
-      min-height: 118px;
+      min-height: 0;
     }
-    .hero-stage-default,
-    .hero-stage-compose {
-      transition: opacity 0.2s ease, transform 0.2s ease;
+    .hero-stage-default {
+      display: block;
     }
     .hero-stage-compose {
       display: none;
     }
     .hero-panel.is-composing .hero-stage-default {
-      display: none;
+      display: none !important;
     }
     .hero-panel.is-composing .hero-stage-compose {
-      display: block;
-      animation: composeIn 0.22s ease;
+      display: block !important;
+      animation: composeIn 0.2s ease;
     }
     @keyframes composeIn {
       from { opacity: 0; transform: translateY(6px); }
@@ -321,15 +320,7 @@
       font-size: 0.9rem;
       margin-bottom: 0.45rem;
     }
-    .hero-panel.is-composing .hero-copy {
-      font-size: 0.86rem;
-      line-height: 1.45;
-      margin-bottom: 0.75rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+    /* bio/actions/chips hide as a block via .hero-stage-default */
     .hero-panel.is-composing .portrait-card img { height: 168px; }
     .hero-panel.is-composing .portrait-meta { padding: 0.55rem 0.7rem 0.65rem; }
     .hero-panel.is-composing .portrait-meta strong { font-size: 0.78rem; }
@@ -1337,19 +1328,19 @@
               <span data-lang="en">App Developer</span>
               <span data-lang="ar">مطوّر تطبيقات</span>
             </p>
-            <p class="hero-copy" data-lang="en">
-              Diploma graduate in Smart Device Application Development.
-              I build mobile-minded products with clear UX thinking, practical problem-solving,
-              and careful attention to detail.
-            </p>
-            <p class="hero-copy" data-lang="ar">
-              خريج دبلوم في تطوير تطبيقات الأجهزة الذكية.
-              أبني منتجات موجّهة للجوال بتفكير واضح في تجربة المستخدم، وحلّ عملي للمشكلات،
-              واهتمام دقيق بالتفاصيل.
-            </p>
-
             <div class="hero-stage" id="heroStage">
               <div class="hero-stage-default" id="heroDefault">
+                <p class="hero-copy" data-lang="en">
+                  Diploma graduate in Smart Device Application Development.
+                  I build mobile-minded products with clear UX thinking, practical problem-solving,
+                  and careful attention to detail.
+                </p>
+                <p class="hero-copy" data-lang="ar">
+                  خريج دبلوم في تطوير تطبيقات الأجهزة الذكية.
+                  أبني منتجات موجّهة للجوال بتفكير واضح في تجربة المستخدم، وحلّ عملي للمشكلات،
+                  واهتمام دقيق بالتفاصيل.
+                </p>
+
                 <div class="hero-actions">
                   <a class="btn btn-primary" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
                     <i class="bi bi-download" aria-hidden="true"></i>
@@ -1366,10 +1357,10 @@
                     <span data-lang="en">WhatsApp</span>
                     <span data-lang="ar">واتساب</span>
                   </a>
-                  <button class="btn btn-ghost" type="button" id="composeOpenBtn">
+                  <button class="btn btn-ghost" type="button" id="composeOpenBtn" aria-expanded="false" aria-controls="heroCompose">
                     <i class="bi bi-chat-dots" aria-hidden="true"></i>
-                    <span data-lang="en">Message</span>
-                    <span data-lang="ar">رسالة</span>
+                    <span data-lang="en">Message me</span>
+                    <span data-lang="ar">راسلني</span>
                   </button>
                 </div>
 
@@ -1415,9 +1406,9 @@
               <div class="hero-stage-compose" id="heroCompose" hidden>
                 <div class="compose-bar">
                   <h3>
-                    <i class="bi bi-send" aria-hidden="true"></i>
-                    <span data-lang="en">Send a message</span>
-                    <span data-lang="ar">أرسل رسالة</span>
+                    <i class="bi bi-chat-dots" aria-hidden="true"></i>
+                    <span data-lang="en">Message me</span>
+                    <span data-lang="ar">راسلني</span>
                   </h3>
                   <button class="compose-close" type="button" id="composeCloseBtn" aria-label="Close">
                     <i class="bi bi-x-lg" aria-hidden="true"></i>
@@ -1457,7 +1448,6 @@
               </div>
             </div>
           </div>
-
           <div class="portrait-wrap">
             <figure class="portrait-card">
               <img
@@ -1836,8 +1826,8 @@
           </a>
           <button class="btn btn-primary" type="button" id="contactJumpCompose">
             <i class="bi bi-chat-dots" aria-hidden="true"></i>
-            <span data-lang="en">Open message</span>
-            <span data-lang="ar">افتح الرسالة</span>
+            <span data-lang="en">Message me</span>
+            <span data-lang="ar">راسلني</span>
           </button>
         </div>
 
