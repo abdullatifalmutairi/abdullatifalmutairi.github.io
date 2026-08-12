@@ -253,10 +253,9 @@
     }
     .hero-panel {
       display: grid;
-      /* Text takes what it needs; photo sits close (kills gap 1 + 2) */
       grid-template-columns: minmax(0, 1fr) minmax(220px, 32%);
       gap: 0.85rem 1.1rem;
-      align-items: start;
+      align-items: stretch;
       min-height: 0;
       background:
         radial-gradient(circle at 100% 0%, rgba(31, 111, 120, 0.14), transparent 42%),
@@ -264,7 +263,7 @@
         linear-gradient(160deg, #16304a 0%, #122033 48%, #1a3d42 100%);
       color: #eef3f8;
       border-radius: 22px;
-      padding: 1.2rem 1.25rem 1.2rem 1.5rem;
+      padding: 1.2rem 1.25rem 1.05rem 1.5rem;
       box-shadow: 0 22px 50px rgba(12, 24, 40, 0.28);
       border: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
@@ -272,6 +271,7 @@
     }
     .hero-content {
       min-width: 0;
+      min-height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -302,10 +302,11 @@
       gap: 0;
       margin-top: 0;
     }
-    /* Compact footer under chips — no margin-top:auto (that was gap 3) */
+    /* Pin to the card bottom — sits flush under the content column */
     .hero-bottom {
-      margin-top: 0.55rem;
-      padding-top: 0.55rem;
+      margin-top: auto;
+      margin-bottom: 0;
+      padding: 0.65rem 0 0;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -313,7 +314,7 @@
       font-size: 0.78rem;
       font-weight: 600;
       color: rgba(238, 243, 248, 0.55);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     .hero-bottom strong {
       color: #f0d7a0;
@@ -597,6 +598,7 @@
       align-items: center;
       gap: 0.4rem;
       min-height: 34px;
+      max-width: 100%;
       padding: 0.3rem 0.55rem 0.3rem 0.7rem;
       border-radius: 999px;
       background: rgba(255,255,255,0.06);
@@ -707,15 +709,19 @@
     .hero-stage-compose .form-note.err { color: #f0b4b4; }
     .hero-stage-compose .btn { min-height: 40px; padding: 0.5rem 0.95rem; }
 
-    /* Desktop portrait: tall card, height from image ratio (not stretched empty) */
+    /* Desktop portrait: matches full text-column height so bottoms align */
     .portrait-wrap {
       width: 100%;
       max-width: 280px;
       min-width: 0;
+      min-height: 0;
+      height: 100%;
       justify-self: end;
-      align-self: start;
+      align-self: stretch;
     }
     .portrait-card {
+      height: 100%;
+      min-height: 100%;
       display: flex;
       flex-direction: column;
       background: rgba(255,255,255,0.06);
@@ -736,9 +742,9 @@
     }
     .portrait-card img {
       width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 5;
-      max-height: 340px;
+      flex: 1 1 auto;
+      height: 100%;
+      min-height: 0;
       object-fit: cover;
       object-position: center 12%;
       background: #24384f;
