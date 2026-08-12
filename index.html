@@ -585,7 +585,46 @@
       box-shadow: 0 8px 20px rgba(29, 168, 81, 0.28);
     }
     .btn-wa-hero:hover { filter: brightness(1.05); }
+    .btn-call {
+      background: linear-gradient(180deg, #3d8bfd, #2563eb);
+      color: #fff;
+      border: 0;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
+      text-decoration: none;
+    }
+    .btn-call:hover { filter: brightness(1.05); color: #fff; }
+    .btn-call .btn-phone-num {
+      font-size: 0.82rem;
+      font-weight: 600;
+      opacity: 0.95;
+      margin-inline-start: 0.15rem;
+    }
+    @media (max-width: 720px) {
+      .btn-call .btn-phone-num { display: none; }
+    }
+    .btn-msg {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(240, 215, 160, 0.35);
+      color: #f0d7a0;
+    }
+    .btn-msg:hover {
+      background: rgba(240, 215, 160, 0.14);
+      border-color: rgba(240, 215, 160, 0.5);
+      color: #fff;
+    }
     .btn i { font-size: 1.05rem; line-height: 1; }
+    .hero-actions-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.55rem;
+    }
+    .hero-actions-cv {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.55rem;
+    }
 
     .hero-chips {
       display: flex;
@@ -1265,8 +1304,8 @@
 
     .contact-actions {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
       margin-bottom: 0.85rem;
     }
     .btn-wa {
@@ -1289,8 +1328,29 @@
     }
     .btn-wa:hover { transform: translateY(-1px); filter: brightness(1.03); }
     .btn-wa i { font-size: 1.1rem; }
+    .btn-call-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 48px;
+      padding: 0.75rem 1.1rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: linear-gradient(180deg, #3d8bfd, #2563eb);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+      border: 0;
+      text-decoration: none;
+      transition: transform 0.15s, filter 0.15s;
+    }
+    .btn-call-light:hover { transform: translateY(-1px); filter: brightness(1.03); color: #fff; }
     #contact .btn.btn-primary {
-      /* light section: keep gold primary usable */
+      min-height: 48px;
+    }
+    @media (max-width: 700px) {
+      .contact-actions { grid-template-columns: 1fr; }
     }
 
     .contact-form {
@@ -1737,12 +1797,12 @@
                   واهتمام بالتفاصيل.
                 </p>
 
-                <div class="hero-actions">
-                  <a class="btn btn-primary" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
-                    <i class="bi bi-download" aria-hidden="true"></i>
-                    <span data-lang="en">Download CV</span>
-                    <span data-lang="ar">تحميل السيرة</span>
-                  </a>
+                <div class="hero-actions hero-actions-contact">
+                  <button class="btn btn-msg" type="button" id="composeOpenBtn" aria-expanded="false" aria-controls="heroCompose">
+                    <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+                    <span data-lang="en">Message</span>
+                    <span data-lang="ar">راسلني</span>
+                  </button>
                   <a
                     class="btn btn-wa-hero"
                     href="https://wa.me/966500066172?text=Hi%20Abdullatif%2C%20I%20saw%20your%20portfolio."
@@ -1753,11 +1813,19 @@
                     <span data-lang="en">WhatsApp</span>
                     <span data-lang="ar">واتساب</span>
                   </a>
-                  <button class="btn btn-ghost" type="button" id="composeOpenBtn" aria-expanded="false" aria-controls="heroCompose">
-                    <i class="bi bi-chat-dots" aria-hidden="true"></i>
-                    <span data-lang="en">Message me</span>
-                    <span data-lang="ar">راسلني</span>
-                  </button>
+                  <a class="btn btn-call" href="tel:+966500066172">
+                    <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+                    <span data-lang="en">Call</span>
+                    <span data-lang="ar">اتصل</span>
+                    <span dir="ltr" class="btn-phone-num">+966 50 006 6172</span>
+                  </a>
+                </div>
+                <div class="hero-actions hero-actions-cv">
+                  <a class="btn btn-primary" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
+                    <i class="bi bi-download" aria-hidden="true"></i>
+                    <span data-lang="en">Download CV</span>
+                    <span data-lang="ar">تحميل السيرة</span>
+                  </a>
                 </div>
 
                 <div class="hero-chips">
@@ -2224,6 +2292,11 @@
         </div>
 
         <div class="contact-actions">
+          <button class="btn btn-primary" type="button" id="contactJumpCompose">
+            <i class="bi bi-chat-dots-fill" aria-hidden="true"></i>
+            <span data-lang="en">Message</span>
+            <span data-lang="ar">راسلني</span>
+          </button>
           <a
             class="btn-wa"
             href="https://wa.me/966500066172?text=Hi%20Abdullatif%2C%20I%20saw%20your%20portfolio."
@@ -2234,11 +2307,12 @@
             <span data-lang="en">WhatsApp</span>
             <span data-lang="ar">واتساب</span>
           </a>
-          <button class="btn btn-primary" type="button" id="contactJumpCompose">
-            <i class="bi bi-chat-dots" aria-hidden="true"></i>
-            <span data-lang="en">Message me</span>
-            <span data-lang="ar">راسلني</span>
-          </button>
+          <a class="btn-call-light" href="tel:+966500066172">
+            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+            <span data-lang="en">Call</span>
+            <span data-lang="ar">اتصل</span>
+            <span dir="ltr">+966 50 006 6172</span>
+          </a>
         </div>
 
         <a class="cv-download" href="assets/Abdullatif-Almutairi-CV.pdf" download="Abdullatif-Almutairi-CV.pdf">
