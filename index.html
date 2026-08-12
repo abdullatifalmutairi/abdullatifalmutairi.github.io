@@ -226,10 +226,9 @@
       border-bottom: 1px solid #e0d6c6;
     }
     .hero-panel {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem 2.5rem;
-      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
       background:
         radial-gradient(circle at 100% 0%, rgba(31, 111, 120, 0.14), transparent 42%),
         radial-gradient(circle at 0% 100%, rgba(184, 137, 61, 0.12), transparent 40%),
@@ -241,6 +240,20 @@
       border: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
       position: relative;
+    }
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem 2.25rem;
+      align-items: center;
+    }
+    .hero-intro {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-body {
+      min-width: 0;
     }
     .hero-panel::before {
       content: "";
@@ -258,7 +271,7 @@
       gap: 0.5rem;
       width: fit-content;
       max-width: 100%;
-      align-self: flex-start; /* don't stretch full row inside .hero-main */
+      align-self: flex-start;
       font-size: 0.78rem;
       font-weight: 650;
       letter-spacing: 0.08em;
@@ -297,11 +310,7 @@
       margin-bottom: 1.35rem;
     }
     html[lang="ar"] .hero-copy { max-width: 52ch; }
-    .hero-main {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-    }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -348,9 +357,12 @@
     .hero-panel.is-composing .portrait-meta span { font-size: 0.7rem; }
     .hero-panel.is-composing .portrait-wrap { width: 150px; }
     .hero-panel.is-composing {
+      gap: 0.85rem;
+      padding: 1.35rem 1.5rem;
+    }
+    .hero-panel.is-composing .hero-top {
+      gap: 1rem 1.5rem;
       align-items: start;
-      gap: 1.25rem 1.75rem;
-      padding: 1.5rem 1.65rem;
     }
     .btn {
       display: inline-flex;
@@ -1302,7 +1314,6 @@
     .footer-icon i { font-size: 1.15rem; line-height: 1; }
 
     @media (max-width: 900px) {
-      .hero-panel,
       .project,
       .job,
       .grid-2,
@@ -1315,32 +1326,57 @@
         grid-template-columns: 1fr;
       }
       .grid-3 { grid-template-columns: 1fr; }
-      /* Photo first on mobile — not dumped under empty navy space */
+      /* Mobile: name + photo side by side at the top */
       .hero-panel {
-        gap: 1.15rem;
-        justify-items: stretch;
-        text-align: start;
+        gap: 1rem;
       }
+      .hero-top {
+        grid-template-columns: 108px minmax(0, 1fr);
+        gap: 0.85rem 0.95rem;
+        align-items: center;
+      }
+      /* Photo first column (start side in LTR / end side handled by RTL grid) */
       .portrait-wrap {
-        order: -1;
-        width: min(168px, 46vw);
-        justify-self: center;
-        margin-inline: auto;
+        grid-column: 1;
+        grid-row: 1;
+        width: 108px;
+        justify-self: start;
+        align-self: center;
       }
+      .hero-intro {
+        grid-column: 2;
+        grid-row: 1;
+        justify-content: center;
+        gap: 0;
+        min-width: 0;
+      }
+      .portrait-meta { display: none; }
       .portrait-card {
-        border-radius: 22px;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+        border-radius: 18px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
       }
       .portrait-card img {
-        height: 190px;
-        object-position: center 10%;
+        height: 128px;
+        object-position: center 12%;
       }
-      .hero-main {
-        align-items: stretch;
+      .hero-intro .eyebrow {
+        margin-bottom: 0.4rem;
+        padding: 0.28rem 0.6rem;
+        font-size: 0.7rem;
       }
-      .hero-main .eyebrow,
-      .hero-main .hero-status {
-        align-self: flex-start;
+      .hero-intro .hero-status {
+        margin-bottom: 0.45rem;
+        padding: 0.28rem 0.55rem;
+        font-size: 0.72rem;
+      }
+      .hero-intro h1 {
+        font-size: clamp(1.35rem, 5.8vw, 1.7rem);
+        margin-bottom: 0.2rem;
+        line-height: 1.2;
+      }
+      .hero-intro .hero-role {
+        margin-bottom: 0;
+        font-size: 0.92rem;
       }
       .hero-actions {
         justify-content: flex-start;
@@ -1350,6 +1386,12 @@
       }
       .hero-copy {
         max-width: none;
+        margin-bottom: 1rem;
+        font-size: 0.92rem;
+      }
+      .hero-body {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-top: 0.95rem;
       }
       .project-side { border-inline-start: 0; border-top: 1px solid rgba(255,255,255,0.08); }
       .cv-download-cta { justify-self: start; }
@@ -1381,8 +1423,7 @@
       .nav-actions { position: relative; }
       .hero { padding-top: 1.15rem; padding-bottom: 1.5rem; }
       .section { padding: 2.1rem 0; }
-      .hero-panel { padding: 1.25rem 1.2rem 1.35rem; border-radius: 20px; }
-      .hero h1 { font-size: clamp(1.65rem, 7vw, 2.1rem); }
+      .hero-panel { padding: 1.15rem 1.1rem 1.25rem; border-radius: 20px; }
     }
   </style>
   <script>
@@ -1428,22 +1469,44 @@
     <section class="hero">
       <div class="wrap">
         <div class="hero-panel" id="heroPanel">
-          <div class="hero-main">
-            <p class="eyebrow">
-              <span data-lang="en">Portfolio · Riyadh</span>
-              <span data-lang="ar">أعمال · الرياض</span>
-            </p>
-            <div class="hero-status">
-              <i aria-hidden="true"></i>
-              <span data-lang="en">Open to work</span>
-              <span data-lang="ar">متاح للعمل</span>
+          <div class="hero-top">
+            <div class="hero-intro">
+              <p class="eyebrow">
+                <span data-lang="en">Portfolio · Riyadh</span>
+                <span data-lang="ar">أعمال · الرياض</span>
+              </p>
+              <div class="hero-status">
+                <i aria-hidden="true"></i>
+                <span data-lang="en">Open to work</span>
+                <span data-lang="ar">متاح للعمل</span>
+              </div>
+              <h1 data-lang="en">Abdullatif Almutairi</h1>
+              <h1 data-lang="ar">عبداللطيف المطيري</h1>
+              <p class="hero-role">
+                <span data-lang="en">App Developer</span>
+                <span data-lang="ar">مطوّر تطبيقات</span>
+              </p>
             </div>
-            <h1 data-lang="en">Abdullatif Almutairi</h1>
-            <h1 data-lang="ar">عبداللطيف المطيري</h1>
-            <p class="hero-role">
-              <span data-lang="en">App Developer</span>
-              <span data-lang="ar">مطوّر تطبيقات</span>
-            </p>
+            <div class="portrait-wrap">
+              <figure class="portrait-card">
+                <img
+                  src="assets/portrait.jpg"
+                  width="176"
+                  height="200"
+                  alt="Portrait of Abdullatif Almutairi"
+                  data-alt-en="Portrait of Abdullatif Almutairi"
+                  data-alt-ar="صورة عبداللطيف المطيري"
+                />
+                <figcaption class="portrait-meta">
+                  <strong data-lang="en">Open to work</strong>
+                  <strong data-lang="ar">متاح للعمل</strong>
+                  <span data-lang="en">App Developer · Riyadh</span>
+                  <span data-lang="ar">مطوّر تطبيقات · الرياض</span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="hero-body">
             <div class="hero-stage" id="heroStage">
               <div class="hero-stage-default" id="heroDefault">
                 <p class="hero-copy" data-lang="en">
@@ -1568,24 +1631,6 @@
                 </form>
               </div>
             </div>
-          </div>
-          <div class="portrait-wrap">
-            <figure class="portrait-card">
-              <img
-                src="assets/portrait.jpg"
-                width="176"
-                height="200"
-                alt="Portrait of Abdullatif Almutairi"
-                data-alt-en="Portrait of Abdullatif Almutairi"
-                data-alt-ar="صورة عبداللطيف المطيري"
-              />
-              <figcaption class="portrait-meta">
-                <strong data-lang="en">Open to work</strong>
-                <strong data-lang="ar">متاح للعمل</strong>
-                <span data-lang="en">App Developer · Riyadh</span>
-                <span data-lang="ar">مطوّر تطبيقات · الرياض</span>
-              </figcaption>
-            </figure>
           </div>
         </div>
       </div>
