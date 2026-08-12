@@ -1529,10 +1529,11 @@
           </div>
           <div class="form-actions">
             <button class="btn btn-primary" type="submit">
-              <span data-lang="en">Open in email app</span>
-              <span data-lang="ar">افتح في تطبيق البريد</span>
+              <span data-lang="en">Continue to email</span>
+              <span data-lang="ar">متابعة للبريد</span>
             </button>
-            <span class="form-note" id="formNote"></span>
+            <span class="form-note" id="formNote" data-lang="en">Opens a clean draft in your mail app.</span>
+            <span class="form-note" id="formNoteAr" data-lang="ar">يفتح مسودة مرتبة في تطبيق البريد.</span>
           </div>
         </form>
 
@@ -1665,6 +1666,7 @@
       var langBtn = document.getElementById("langToggle");
       var contactForm = document.getElementById("contactForm");
       var formNote = document.getElementById("formNote");
+      var formNoteAr = document.getElementById("formNoteAr");
 
       function currentLang() {
         return root.lang === "ar" ? "ar" : "en";
@@ -1748,16 +1750,39 @@
           var name = document.getElementById("cName").value.trim();
           var email = document.getElementById("cEmail").value.trim();
           var msg = document.getElementById("cMsg").value.trim();
-          var subject = encodeURIComponent("Portfolio message from " + name);
-          var body = encodeURIComponent(
-            "Name: " + name + "\nEmail: " + email + "\n\n" + msg
-          );
-          window.location.href = "mailto:ABLT14409@gmail.com?subject=" + subject + "&body=" + body;
+          var ar = currentLang() === "ar";
+          var subject = ar
+            ? ("تواصل عبر الموقع · " + name)
+            : ("Portfolio contact · " + name);
+          var body = ar
+            ? (
+              "مرحباً عبداللطيف،\n\n" +
+              msg + "\n\n" +
+              "----------\n" +
+              name + "\n" +
+              email
+            )
+            : (
+              "Hi Abdullatif,\n\n" +
+              msg + "\n\n" +
+              "----------\n" +
+              name + "\n" +
+              email
+            );
+          window.location.href =
+            "mailto:ABLT14409@gmail.com?subject=" +
+            encodeURIComponent(subject) +
+            "&body=" +
+            encodeURIComponent(body);
+          var okEn = "Draft opened in your mail app.";
+          var okAr = "تم فتح المسودة في تطبيق البريد.";
           if (formNote) {
-            formNote.textContent = currentLang() === "ar"
-              ? "سيتم فتح تطبيق البريد لديك."
-              : "Your email app should open next.";
+            formNote.textContent = okEn;
             formNote.classList.add("ok");
+          }
+          if (formNoteAr) {
+            formNoteAr.textContent = okAr;
+            formNoteAr.classList.add("ok");
           }
         });
       }
