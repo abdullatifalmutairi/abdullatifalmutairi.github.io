@@ -251,11 +251,11 @@
         var(--sec-paper);
       border-bottom: 0;
     }
-    /* Clean desktop hero: packed text + photo, no empty navy voids */
+    /* Packed hero: everything stacked tight, photo beside without dead space */
     .hero-panel {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 250px;
-      gap: 1.15rem 1.35rem;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 0.75rem 0.9rem;
       align-items: start;
       background:
         radial-gradient(circle at 100% 0%, rgba(31, 111, 120, 0.14), transparent 42%),
@@ -263,7 +263,7 @@
         linear-gradient(160deg, #16304a 0%, #122033 48%, #1a3d42 100%);
       color: #eef3f8;
       border-radius: 22px;
-      padding: 1.35rem 1.4rem 1.35rem 1.6rem;
+      padding: 1.1rem 1.15rem 1.1rem 1.3rem;
       box-shadow: 0 22px 50px rgba(12, 24, 40, 0.28);
       border: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
@@ -273,7 +273,7 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.7rem;
+      gap: 0.45rem;
     }
     .hero-intro {
       min-width: 0;
@@ -284,23 +284,24 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0.4rem;
-      margin-bottom: 0.5rem;
+      gap: 0.35rem;
+      margin-bottom: 0.35rem;
     }
     .hero-pills .eyebrow,
     .hero-pills .hero-status {
-      margin-bottom: 0;
+      margin-bottom: 0 !important;
     }
     .hero-body {
       min-width: 0;
       display: flex;
       flex-direction: column;
+      gap: 0.45rem;
     }
     .hero-about {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.65rem;
+      gap: 0.45rem;
     }
     .hero-about .hero-copy {
       margin-bottom: 0;
@@ -308,19 +309,19 @@
     .hero-cv-btn {
       align-self: flex-start;
     }
-    /* Contact sits right under bio with only a small gap */
+    /* Directly under CV — small gap only, never auto-pushed down */
     .hero-contact-block {
-      margin-top: 0.85rem;
-      padding-top: 0.85rem;
+      margin-top: 0.35rem;
+      padding-top: 0.55rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
+      gap: 0.4rem;
     }
     .hero-actions-contact {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.45rem;
+      gap: 0.4rem;
       margin: 0;
     }
     .hero-panel::before {
@@ -348,37 +349,37 @@
       background: rgba(215, 179, 106, 0.12);
       border: 1px solid rgba(215, 179, 106, 0.28);
       border-radius: 999px;
-      padding: 0.38rem 0.75rem;
-      margin-bottom: 0.85rem;
+      padding: 0.32rem 0.7rem;
+      margin-bottom: 0;
     }
     html[lang="ar"] .eyebrow { letter-spacing: 0.02em; text-transform: none; }
     .hero h1 {
       font-family: "Source Serif 4", Georgia, serif;
-      font-size: clamp(1.9rem, 3.6vw, 2.55rem);
+      font-size: clamp(1.85rem, 3.4vw, 2.4rem);
       line-height: 1.12;
       letter-spacing: -0.03em;
       font-weight: 600;
       color: #fff;
-      margin-bottom: 0.28rem;
+      margin-bottom: 0.2rem;
     }
     html[lang="ar"] .hero h1 {
       line-height: 1.25;
       letter-spacing: 0;
     }
     .hero-role {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 500;
       color: #9fd0d4;
-      margin-bottom: 0;
+      margin-bottom: 0.15rem;
     }
     .hero-copy {
       color: rgba(238, 243, 248, 0.78);
-      font-size: 0.95rem;
-      max-width: 42ch;
+      font-size: 0.94rem;
+      max-width: none;
       margin-bottom: 0;
-      line-height: 1.5;
+      line-height: 1.45;
     }
-    html[lang="ar"] .hero-copy { max-width: 46ch; }
+    html[lang="ar"] .hero-copy { max-width: none; }
 
     .hero-actions {
       display: flex;
@@ -393,7 +394,9 @@
       overflow: hidden;
     }
     .hero-stage-default {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
       opacity: 1;
       transform: translateY(0) scale(1);
       filter: blur(0);
@@ -516,17 +519,17 @@
     .hero-panel.is-composing .portrait-meta strong { font-size: 0.78rem; }
     .hero-panel.is-composing .portrait-meta span { font-size: 0.7rem; }
     .hero-panel.is-composing {
-      grid-template-columns: minmax(0, 1fr) 220px;
-      padding: 1.15rem 1.2rem 1.15rem 1.4rem;
+      grid-template-columns: minmax(0, 1fr) 200px;
+      padding: 1.05rem 1.1rem 1.05rem 1.25rem;
     }
     .hero-panel.is-composing .hero-content {
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
     .hero-panel.is-composing .portrait-wrap {
-      width: 220px;
+      width: 200px;
     }
-    .hero-panel.is-composing .portrait-card img {
-      height: 220px;
+    .hero-panel.is-composing .hero-stage-default {
+      display: none !important;
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-stage-default,
@@ -749,21 +752,20 @@
     .hero-stage-compose .form-note.err { color: #f0b4b4; }
     .hero-stage-compose .btn { min-height: 40px; padding: 0.5rem 0.95rem; }
 
-    /* Desktop portrait: rounded inset card, natural height */
+    /* Photo card next to text — fixed size, no stretch gaps */
     .portrait-wrap {
-      width: 250px;
+      width: 210px;
       max-width: 100%;
       justify-self: end;
       align-self: start;
     }
     .portrait-card {
-      display: flex;
-      flex-direction: column;
+      display: block;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.26);
       position: relative;
     }
     .portrait-card::before {
@@ -777,17 +779,14 @@
     }
     .portrait-card img {
       width: 100%;
-      height: 280px;
+      height: 250px;
       object-fit: cover;
       object-position: center 12%;
       background: #24384f;
       display: block;
     }
     .portrait-meta {
-      padding: 0.65rem 0.75rem 0.75rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.12));
+      display: none;
     }
     .portrait-meta strong {
       display: block;
@@ -1564,54 +1563,64 @@
         grid-template-columns: 1fr;
       }
       .grid-3 { grid-template-columns: 1fr; }
-      /* Mobile: photo + name on top row, body under — still packed */
+      /* Mobile: photo + name top, body under — tight */
       .hero-panel {
         display: grid;
-        grid-template-columns: 120px minmax(0, 1fr);
+        grid-template-columns: 112px minmax(0, 1fr);
         grid-template-areas:
           "photo intro"
           "body body";
-        gap: 0.75rem 0.85rem;
-        padding: 1.1rem 1rem 1.15rem;
-        border-radius: 20px;
+        gap: 0.65rem 0.75rem;
+        padding: 1rem 0.95rem 1.05rem;
+        border-radius: 18px;
+        align-items: start;
       }
       .hero-content {
         display: contents;
       }
       .portrait-wrap {
         grid-area: photo;
-        width: 120px;
+        width: 112px;
+        height: auto;
         justify-self: start;
         align-self: start;
       }
       .hero-intro {
         grid-area: intro;
-        justify-content: center;
         align-items: flex-start;
         text-align: start;
         min-width: 0;
       }
       .hero-body {
         grid-area: body;
-        padding: 0.7rem 0 0;
+        padding: 0.55rem 0 0;
         border-top: 1px solid rgba(255,255,255,0.08);
+        gap: 0.45rem;
+      }
+      .hero-stage,
+      .hero-stage-default {
+        display: flex !important;
+        flex-direction: column;
+        gap: 0.5rem;
+        flex: 0 0 auto;
       }
       .hero-contact-block {
-        margin-top: 0.7rem;
-        padding-top: 0.7rem;
+        margin-top: 0;
+        padding-top: 0.5rem;
       }
-      .portrait-meta { display: none; }
       .portrait-card {
-        border-radius: 16px;
+        height: auto;
+        border-radius: 14px;
       }
       .portrait-card img {
-        height: 148px;
+        flex: none;
+        height: 140px;
       }
       .hero-panel.is-composing {
-        grid-template-columns: 110px minmax(0, 1fr);
+        grid-template-columns: 100px minmax(0, 1fr);
       }
-      .hero-panel.is-composing .portrait-wrap { width: 110px; }
-      .hero-panel.is-composing .portrait-card img { height: 130px; }
+      .hero-panel.is-composing .portrait-wrap { width: 100px; }
+      .hero-panel.is-composing .portrait-card img { height: 120px; }
       /* Pills side-by-side, centered */
       .hero-intro .eyebrow,
       .hero-intro .hero-status {
