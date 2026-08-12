@@ -256,7 +256,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) 250px;
       grid-template-rows: auto auto;
-      gap: 0 1rem;
+      gap: 5pt 1rem; /* 5pt between photo/content row and contact bar */
       align-items: stretch;
       background:
         radial-gradient(circle at 100% 0%, rgba(31, 111, 120, 0.14), transparent 42%),
@@ -278,7 +278,8 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      padding: 0 0 0.85rem;
+      /* match photo bottom; contact separation is panel row-gap 5pt */
+      padding: 0;
     }
     .hero-intro {
       min-width: 0;
@@ -323,8 +324,8 @@
       min-height: 0;
       height: 100%;
       position: relative;
-      /* space above contact bar (matches .hero-content bottom padding) */
-      margin: 0 0 0.85rem;
+      /* vertical gap to contact bar comes from .hero-panel row-gap: 5pt */
+      margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
@@ -386,7 +387,7 @@
       grid-template-rows: auto;
     }
     .hero-panel.is-composing .portrait-wrap {
-      margin-bottom: 0;
+      margin: 0;
     }
     .hero-panel::before {
       content: "";
@@ -595,7 +596,7 @@
     }
     .hero-panel.is-composing .portrait-wrap {
       width: 200px;
-      margin-bottom: 0;
+      margin: 0;
     }
     .hero-panel.is-composing .hero-stage-default {
       display: none !important;
