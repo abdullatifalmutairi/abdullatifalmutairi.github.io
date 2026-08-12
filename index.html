@@ -1518,11 +1518,11 @@
           <h2 data-lang="ar">للتواصل</h2>
           <p class="lead" data-lang="en">
             Open to junior developer, app developer, and digital product roles in Riyadh.
-            Interviews welcome · timezone AST.
+            Interviews welcome · Riyadh time (UTC+3).
           </p>
           <p class="lead" data-lang="ar">
             متاح لأدوار مطوّر مبتدئ، ومطوّر تطبيقات، ومنتجات رقمية في الرياض.
-            المقابلات مرحّب بها · التوقيت AST.
+            المقابلات مرحّب بها · توقيت الرياض (UTC+3).
           </p>
         </div>
 
@@ -1546,6 +1546,11 @@
         <form class="contact-form" id="contactForm">
           <h3 data-lang="en">Send a message</h3>
           <h3 data-lang="ar">أرسل رسالة</h3>
+          <!-- Web3Forms: submissions go to abdullatif.almutairi@outlook.com -->
+          <input type="hidden" name="access_key" value="fcbf2fdf-fcdf-486d-b3b3-4da5ca7afc54" />
+          <input type="hidden" name="subject" value="New message from portfolio" />
+          <input type="hidden" name="from_name" value="Abdullatif Portfolio" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="form-row">
             <div class="form-field">
               <label for="cName"><span data-lang="en">Name</span><span data-lang="ar">الاسم</span></label>
@@ -1561,12 +1566,12 @@
             <textarea id="cMsg" name="message" required></textarea>
           </div>
           <div class="form-actions">
-            <button class="btn btn-primary" type="submit">
-              <span data-lang="en">Continue to email</span>
-              <span data-lang="ar">متابعة للبريد</span>
+            <button class="btn btn-primary" type="submit" id="formSubmitBtn">
+              <span data-lang="en">Send message</span>
+              <span data-lang="ar">إرسال الرسالة</span>
             </button>
-            <span class="form-note" id="formNote" data-lang="en">Opens a clean draft in your mail app.</span>
-            <span class="form-note" id="formNoteAr" data-lang="ar">يفتح مسودة مرتبة في تطبيق البريد.</span>
+            <span class="form-note" id="formNote" data-lang="en">Sent directly from the site. No mail app needed.</span>
+            <span class="form-note" id="formNoteAr" data-lang="ar">تُرسل مباشرة من الموقع. بدون تطبيق بريد.</span>
           </div>
         </form>
 
@@ -1799,6 +1804,7 @@
       if (contactForm) {
         contactForm.addEventListener("submit", function (e) {
           e.preventDefault();
+          var btn = document.getElementById("formSubmitBtn");
           var name = document.getElementById("cName").value.trim();
           var email = document.getElementById("cEmail").value.trim();
           var msg = document.getElementById("cMsg").value.trim();
@@ -1806,36 +1812,70 @@
           var subject = ar
             ? ("تواصل عبر الموقع · " + name)
             : ("Portfolio contact · " + name);
-          var body = ar
-            ? (
-              "مرحباً عبداللطيف،\n\n" +
-              msg + "\n\n" +
-              "----------\n" +
-              name + "\n" +
-              email
-            )
-            : (
-              "Hi Abdullatif,\n\n" +
-              msg + "\n\n" +
-              "----------\n" +
-              name + "\n" +
-              email
-            );
-          window.location.href =
-            "mailto:ABLT14409@gmail.com?subject=" +
-            encodeURIComponent(subject) +
-            "&body=" +
-            encodeURIComponent(body);
-          var okEn = "Draft opened in your mail app.";
-          var okAr = "تم فتح المسودة في تطبيق البريد.";
-          if (formNote) {
-            formNote.textContent = okEn;
-            formNote.classList.add("ok");
+
+          function setNotes(en, arText, ok) {
+            if (formNote) {
+              formNote.textContent = en;
+              formNote.classList.toggle("ok", !!ok);
+            }
+            if (formNoteAr) {
+              formNoteAr.textContent = arText;
+              formNoteAr.classList.toggle("ok", !!ok);
+            }
           }
-          if (formNoteAr) {
-            formNoteAr.textContent = okAr;
-            formNoteAr.classList.add("ok");
-          }
+
+          if (btn) btn.disabled = true;
+          setNotes(
+            ar ? "Sending..." : "Sending...",
+            "جاري الإرسال...",
+            false
+          );
+
+          var payload = {
+            access_key: "fcbf2fdf-fcdf-486d-b3b3-4da5ca7afc54",
+            subject: subject,
+            from_name: "Abdullatif Portfolio",
+            name: name,
+            email: email,
+            message: msg
+          };
+
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+            },
+            body: JSON.stringify(payload)
+          })
+            .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+            .then(function (result) {
+              if (result.ok && result.data && result.data.success) {
+                contactForm.reset();
+                setNotes(
+                  "Message sent. Thank you!",
+                  "تم إرسال الرسالة. شكراً لك!",
+                  true
+                );
+              } else {
+                var err = (result.data && result.data.message) || "Send failed";
+                setNotes(
+                  "Could not send. Try WhatsApp or email instead. (" + err + ")",
+                  "تعذر الإرسال. جرّب واتساب أو البريد. (" + err + ")",
+                  false
+                );
+              }
+            })
+            .catch(function () {
+              setNotes(
+                "Network error. Try WhatsApp or email instead.",
+                "خطأ في الشبكة. جرّب واتساب أو البريد.",
+                false
+              );
+            })
+            .finally(function () {
+              if (btn) btn.disabled = false;
+            });
         });
       }
     })();
