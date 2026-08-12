@@ -100,12 +100,30 @@
       letter-spacing: 0.03em; margin-bottom: 0.45rem;
     }
     .contacts {
-      display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem;
+      display: flex; flex-wrap: wrap; gap: 0.35rem 0.85rem;
       color: var(--muted); font-size: 0.84rem;
+      margin-bottom: 0.15rem;
     }
-    .contacts span { display: inline-flex; align-items: center; gap: 0.3rem; }
+    .contacts span,
+    .contacts a.contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: inherit;
+      text-decoration: none;
+    }
+    .contacts a.contact-item:hover { color: var(--teal); }
+    .ico {
+      width: 0.95em;
+      height: 0.95em;
+      flex-shrink: 0;
+      color: var(--gold-deep);
+      opacity: 0.92;
+    }
     .summary {
-      margin-top: 0.5rem;
+      margin-top: 0.85rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--line-soft);
       color: var(--ink-soft);
       font-size: 0.86rem;
       max-width: 72ch;
@@ -285,7 +303,17 @@
       }
       .photo { width: 96px; height: 116px; border-radius: 14px; }
       .hero h1 { font-size: 1.4rem; }
-      .summary { font-size: 0.82rem; margin-top: 0.35rem; line-height: 1.45; }
+      .summary {
+        font-size: 0.82rem;
+        margin-top: 0.75rem;
+        padding-top: 0.65rem;
+        line-height: 1.45;
+      }
+      .ico {
+        color: var(--gold-deep) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
       .main {
         padding: 0.8rem 1.1rem 0.65rem !important;
         gap: 0.85rem;
@@ -337,10 +365,22 @@
         <h1>Abdullatif Almutairi</h1>
         <div class="role">App Developer</div>
         <div class="contacts">
-          <span>Riyadh, Saudi Arabia</span>
-          <span><a href="tel:+966500066172">+966 50 006 6172</a></span>
-          <span><a href="mailto:abdullatif.almutairi@outlook.com">abdullatif.almutairi@outlook.com</a></span>
-          <span><a href="https://github.com/abdullatifalmutairi">github.com/abdullatifalmutairi</a></span>
+          <span class="contact-item">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+            Riyadh, Saudi Arabia
+          </span>
+          <a class="contact-item" href="tel:+966500066172">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M6.5 4.5h3l1.2 4-2 1.2a12.5 12.5 0 0 0 5.6 5.6l1.2-2 4 1.2v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4.5 6.7 2 2 0 0 1 6.5 4.5z"/></svg>
+            +966 50 006 6172
+          </a>
+          <a class="contact-item" href="mailto:abdullatif.almutairi@outlook.com">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7.5 7.5 6 7.5-6"/></svg>
+            abdullatif.almutairi@outlook.com
+          </a>
+          <a class="contact-item" href="https://github.com/abdullatifalmutairi" target="_blank" rel="noopener">
+            <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-3.1 19.1c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.6.4-1.1.7-1.3-2.3-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.5 9.5 0 0 1 5 0c2-1.3 2.8-1 2.8-1a3.6 3.6 0 0 1 .1 2.7 3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2z"/></svg>
+            github.com/abdullatifalmutairi
+          </a>
         </div>
         <p class="summary">
           Applied College graduate with a Diploma in Smart Device Application Development.
