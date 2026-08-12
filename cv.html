@@ -268,47 +268,46 @@
     @media print {
       body { background: #fff; }
       .toolbar { display: none !important; }
-      html, body { font-size: 11.6px; height: 100%; }
-      @page { size: A4; margin: 7mm; }
+      html, body { font-size: 11.5px; }
+      @page { size: A4; margin: 8mm; }
       .sheet {
         width: 100%;
         margin: 0;
         border-radius: 0;
         box-shadow: none !important;
         border: 0;
-        height: 283mm;
-        min-height: 283mm;
+        height: auto !important;
+        min-height: 0 !important;
       }
       a { color: inherit; text-decoration: none; }
       .hero {
         grid-template-columns: 96px 1fr !important;
-        gap: 0.85rem;
-        padding: 0 0 0.75rem !important;
+        gap: 0.8rem;
+        padding: 0 0 0.6rem !important;
         background: linear-gradient(165deg, #fffcf8 0%, #faf7f2 100%) !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
       .body {
         grid-template-columns: 1.38fr 0.95fr !important;
-        flex: 1 1 auto;
-        min-height: 0;
-        align-items: stretch;
+        flex: 0 0 auto !important;
+        align-items: start !important;
       }
       .side {
         border-left: 1px solid var(--line-soft) !important;
         border-top: 0 !important;
         background: transparent !important;
-        padding: 0.8rem 0.9rem 0.65rem 0.95rem !important;
-        gap: 0.78rem;
+        padding: 0.65rem 0.85rem 0.5rem 0.9rem !important;
+        gap: 0.55rem !important;
       }
       .photo { width: 96px; height: 116px; border-radius: 14px; }
-      .hero h1 { font-size: 1.4rem; }
+      .hero h1 { font-size: 1.38rem; }
       .summary {
         font-size: 0.82rem;
-        margin-top: 0.85rem;
+        margin-top: 0.7rem;
         padding-top: 0;
         border: 0;
-        line-height: 1.45;
+        line-height: 1.42;
       }
       .ico {
         color: var(--gold-deep) !important;
@@ -316,14 +315,14 @@
         print-color-adjust: exact;
       }
       .main {
-        padding: 0.8rem 1.1rem 0.65rem !important;
-        gap: 0.85rem;
+        padding: 0.65rem 1.05rem 0.5rem !important;
+        gap: 0.58rem !important;
       }
-      .block h2 { margin-bottom: 0.4rem; font-size: 0.68rem; }
-      .item ul { gap: 0.14rem; font-size: 0.82rem; }
+      .block h2 { margin-bottom: 0.3rem; font-size: 0.66rem; }
+      .item ul { gap: 0.1rem; font-size: 0.81rem; }
       .item h3 { font-size: 0.9rem; }
       .chip {
-        padding: 0.15rem 0.4rem;
+        padding: 0.14rem 0.38rem;
         font-size: 0.68rem;
         background: var(--warm) !important;
         -webkit-print-color-adjust: exact;
@@ -335,11 +334,12 @@
         print-color-adjust: exact;
       }
       .side .block-availability {
-        margin-top: auto;
-        padding-top: 0.4rem;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
       }
       .foot {
-        padding: 0.55rem 1.1rem;
+        margin-top: 0.2rem !important;
+        padding: 0.48rem 1.05rem;
         background: var(--warm) !important;
         border-top: 1px solid var(--line-soft);
         -webkit-print-color-adjust: exact;
